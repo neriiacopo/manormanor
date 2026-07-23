@@ -1,0 +1,6 @@
+.mainArea {
+    flex: var(--gv-main-flex);
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+}

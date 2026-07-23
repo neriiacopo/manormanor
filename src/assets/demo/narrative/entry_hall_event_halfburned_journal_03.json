@@ -1,0 +1,146 @@
+{
+  "id": "entry_hall_event_halfburned_journal_03",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Half-Burned Journal",
+  "description": "Amid your surroundings, something catches your eye. Resting on the flagstones beside a hearth lies a journal, its covers spread open as though dropped in the middle of being read. As you draw closer, you notice that half its pages have been consumed by fire, their edges curled black and still faintly warm beneath your fingertips. The surviving pages are filled with dense, cramped handwriting that grows increasingly erratic toward the back, the ink trailing into frantic, unfinished strokes. Whatever the author was trying to record, they never lived to finish it.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "beats": [
+    {
+      "id": "encounter",
+      "description": "The journal lies open on the flagstones. The embers in the hearth are still faintly warm.",
+      "choices": [
+        {
+          "label": "Read what remains",
+          "description": "Kneel and work through the surviving pages, however unsettling their contents.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You read to the last legible line — a list of room names, each crossed out. The handwriting at the end is not the same as the handwriting at the beginning.",
+              "effects": [],
+              "next_beat": "read_aftermath"
+            },
+            "failure": {
+              "narrative": "The handwriting shifts somewhere in the middle, becomes something that does not look like writing at all, and you cannot stop reading it.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ]
+            }
+          },
+          "id": "read_what_remains"
+        },
+        {
+          "label": "Examine the burn pattern only",
+          "description": "Study which pages were burned and which survived, without reading the words.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The burning started from the inside — someone tore pages out and burned them first, then let the rest catch.",
+              "effects": []
+            }
+          },
+          "id": "examine_the_burn_pattern_only"
+        },
+        {
+          "label": "Finish what was started — burn it",
+          "description": "Feed the journal to the hearth embers and watch it go.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 7
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The pages take quickly and are gone; you feel briefly, inexplicably lighter.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ]
+            },
+            "failure": {
+              "narrative": "As the last page catches, you are certain you hear something — not a sound, exactly — and your hands are shaking when you stand.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ]
+            }
+          },
+          "id": "finish_what_was_started_burn_it"
+        }
+      ]
+    },
+    {
+      "id": "read_aftermath",
+      "description": "The last legible page is a list of room names, each crossed out in a different hand than the one that wrote them. The journal is still in your hands.",
+      "choices": [
+        {
+          "label": "Tear out the page and take it",
+          "description": "The list may mean something. Carry it.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You fold the page carefully and put it away. The knowledge is yours now, and so is the paper it came on.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                },
+                {
+                  "item_grant": "fragment_journal"
+                },
+                {
+                  "discover_lore": "journal_fragment"
+                }
+              ]
+            }
+          },
+          "id": "tear_out_the_page_and_take_it"
+        },
+        {
+          "label": "Close it and leave it where it lies",
+          "description": "You have read it. You do not need to carry it.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The knowledge is yours. The journal stays.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                },
+                {
+                  "discover_lore": "journal_fragment"
+                }
+              ]
+            }
+          },
+          "id": "close_it_and_leave_it_where_it_lies"
+        }
+      ]
+    }
+  ],
+  "visual": {
+    "image": "images/entry_hall_event_halfburned_journal_03.png",
+    "alt_text": "A splayed journal on cold flagstones, its far pages blackened and curled, the nearer ones covered in dense handwriting that grows ragged toward the burn line. Ash and ember-glow from a dying hearth beyond."
+  }
+}

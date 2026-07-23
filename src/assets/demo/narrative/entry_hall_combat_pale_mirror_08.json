@@ -1,0 +1,83 @@
+{
+  "id": "entry_hall_combat_pale_mirror_08",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "What the Mirror Shows",
+  "description": "The tall mirror by the entrance should reflect you. It does not. The figure inside it stands where you stand, wears what you wear, but it is too still - and when you move, it moves a half-beat late. It raises its head. Its eyes are the wrong color. They are the color of nothing.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "common"
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Pale Mirror",
+    "threat_type": "Spectral",
+    "health": 4,
+    "damage_pool": "1d3+1d4",
+    "standard_attack": {
+      "telegraph": "The figure in the glass mimics a gesture you have not made - and you feel it working through you.",
+      "attack_label": "Damage Pool: 1d3+1d4 | Targets: Mind",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "display_name": "Finishing Gesture",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The figure in the glass has learned you now - it moves before you do, finishing your gestures before your muscles fire, and you feel your own body becoming the echo.",
+        "attack_label": "Damage Pool: 1d4+1d6 | Targets: Mind",
+        "id": "the_pale_mirror_special_1",
+        "dice_pool_override": "1d4+1d6",
+        "resource_target_override": "Spectral",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "display_name": "Colorless Bleed",
+        "trigger": {
+          "type": "state",
+          "params": {
+            "resource": "Mind",
+            "operator": "lte",
+            "value": 4
+          }
+        },
+        "telegraph": "The mirror cracks - not the glass, but the idea of it - and something colorless bleeds through, cold and physical, settling into your bones like frost.",
+        "attack_label": "Damage Pool: 1d3+1d4 | Targets: Body",
+        "resource_target_override": "Physical",
+        "id": "the_pale_mirror_special_2",
+        "dice_pool_override": "1d3+1d4",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "It presses one hand flat against the glass from the inside. The surface does not give. But you feel it anyway.",
+  "visual": {
+    "alt_text": "A tall mirror in a darkened entry hall. The reflection is slightly wrong - a figure that does not quite match, pressing one pale hand to the glass, eyes blank and colorless."
+  }
+}

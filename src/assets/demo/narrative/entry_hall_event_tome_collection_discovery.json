@@ -1,0 +1,147 @@
+{
+  "id": "entry_hall_event_tome_collection_discovery",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Nobleman's Hidden Study",
+  "description": "Behind a section of wall paneling that sits a half-inch proud of its neighbors, a latch gives way and a door swings inward on dry hinges. The room beyond is small and close, its shelves rising floor to ceiling on three walls, every inch crowded with leather-bound volumes, rolled manuscripts, and stoppered glass vessels clouded with age. A writing desk occupies the center, its surface buried under correspondence and folded charts, a tarnished inkwell still uncapped as though the owner stepped away moments ago. The collection is extraordinary — titles you recognize as rare, texts that have no business residing outside a great library, objects of clear value nested between the books like afterthoughts. The room smells of camphor and old paper, and something else beneath it, faint and wrong.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "draw_mode": "forced_only",
+  "force_next_draw": null,
+  "visual": {
+    "image": "images/entry_hall_event_tome_collection_discovery.png",
+    "alt_text": "A cramped private study, walls lined floor to ceiling with leather-bound volumes and stoppered glass vessels, a writing desk buried in papers at its center."
+  },
+  "choices": [
+    {
+      "id": "read_the_shelves_for_a_weapon",
+      "label": "Search the shelves for something that can be used as a weapon",
+      "description": "",
+      "requires_item": null,
+      "requires_registry": null,
+      "resource_cost": null,
+      "resource_tests": [
+        {
+          "resource": "Mind",
+          "dc": 5
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You work methodically, reading spines and disturbing objects with care. Behind a row of oversized herbals you find a narrow recess, and inside it a bone-handled knife wrapped in oilcloth, laid there deliberately and long ago. The blade is clean. Whoever hid it expected to return.",
+          "effects": [
+            {
+              "item_grant": "bone_knife"
+            }
+          ],
+          "next_beat": null,
+          "force_next_draw": null
+        },
+        "failure": {
+          "narrative": "You pull volumes from the shelves without care, convinced the answer is one row deeper. Pages cascade. A glass vessel tips and shatters, flooding the desk in something thick and dark. You find no weapon, and the smell that was faint before is stronger now, rising from the spilled liquid.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -1
+            }
+          ],
+          "next_beat": null,
+          "force_next_draw": null
+        }
+      }
+    },
+    {
+      "id": "force_open_the_desk_drawers",
+      "label": "Force open the locked desk drawers",
+      "description": "",
+      "requires_item": null,
+      "requires_registry": null,
+      "resource_cost": null,
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 7
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You brace against the desk and wrench. The drawer frame splinters with a crack that sounds too loud in the small room. Inside: a chamois pouch heavy with coin, a vial of something clear and sharp-smelling, and a folded iron key crusted with verdigris. You take what you can carry.",
+          "effects": [
+            {
+              "currency_grant": {
+                "currency": "gold",
+                "min": 8,
+                "max": 14
+              }
+            },
+            {
+              "item_grant": "iron_key"
+            }
+          ],
+          "next_beat": null,
+          "force_next_draw": null
+        },
+        "failure": {
+          "narrative": "The drawer holds. You throw your weight against it twice, three times. On the third attempt the wood gives — but not cleanly. A spring mechanism releases inside and a metal bar slams across your fingers with punishing force. The drawer hangs open and empty. Whatever was inside was taken long before you arrived.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ],
+          "next_beat": null,
+          "force_next_draw": null
+        }
+      }
+    },
+    {
+      "id": "examine_the_curios_between_the_books",
+      "label": "Examine the curios and loose items shelved among the volumes",
+      "description": "",
+      "requires_item": null,
+      "requires_registry": null,
+      "resource_cost": null,
+      "resource_tests": [
+        {
+          "resource": "Mind",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You slow your hands and look with patience rather than urgency. A stoppered vial of pungent salts. A small cloth pouch of dried herbs still faintly aromatic. A tarnished charm etched with a pattern you do not recognize but which feels deliberate. You pocket all three without disturbing anything further.",
+          "effects": [
+            {
+              "item_grant": "smelling_salts"
+            },
+            {
+              "item_grant": "etched_charm"
+            }
+          ],
+          "next_beat": null,
+          "force_next_draw": null
+        },
+        "failure": {
+          "narrative": "Your eye skips from object to object, drawn by each in turn, and you handle more than you should. A sealed jar opens under your fingers without apparent cause. The smell that has been lurking beneath everything fills the room entirely — thick, organic, wrong. You back away with nothing, pulling the panel shut behind you.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -1
+            },
+            {
+              "resource": "Stamina",
+              "delta": -1
+            }
+          ],
+          "next_beat": null,
+          "force_next_draw": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "id": "entry_hall_event_falling_chandelier_02",
+  "class": "Event",
+  "subtype": "Trap",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Iron and Glass from Above",
+  "description": "The chandelier has been dead for years — candles long wept to nothing, ironwork furred with rust. You hear the groan before you see the movement. One of the ceiling chains is pulling free, the plaster around it crumbling in small white pieces. The chandelier lurches, tilts, and begins to fall.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Throw yourself clear",
+      "description": "Move fast, move now — pick a direction and commit.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You hit the floor hard and the chandelier smashes down where you were standing, filling the air with iron dust and broken glass.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "You move, but not fast enough — the outer ring catches your shoulder and drives you down.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "throw_yourself_clear"
+    },
+    {
+      "label": "Brace beneath the doorframe",
+      "description": "The arch behind you is stone — put your back to it and cover your head.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 4
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "The chandelier strikes the floor two feet in front of you; the arch holds, and the shrapnel scatters away.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "You find the arch too late — a long shard of iron opens a cut across your forearm.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -1
+            }
+          ]
+        }
+      },
+      "id": "brace_beneath_the_doorframe"
+    },
+    {
+      "label": "Catch the chain and arrest the fall",
+      "description": "The chain is still moving — if you can grab it and brace, you might slow it enough.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 8
+        },
+        {
+          "resource": "Mind",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "The chain bites into your palms but holds; the chandelier swings and settles without falling, creaking overhead like a stopped clock.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -1
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "The chain strips through your grip and the full weight comes down — you are thrown back by the displaced air and the sound alone is enough to loosen something in your chest.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            },
+            {
+              "resource": "Mind",
+              "delta": -1
+            }
+          ]
+        }
+      },
+      "id": "catch_the_chain_and_arrest_the_fall"
+    }
+  ],
+  "visual": {
+    "alt_text": "A vast rusted chandelier tipping from a cracked plaster ceiling, one chain torn free, the floor below scattered with old wax and dust."
+  }
+}

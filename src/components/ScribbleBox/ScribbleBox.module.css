@@ -1,0 +1,14 @@
+.scribbleBox {
+  font-family: var(--font-scribble);
+  background: transparent;
+  border: 2px solid var(--color-ink);
+  padding: 10px 18px;
+  cursor: pointer;
+  color: var(--color-ink);
+  /* TODO(cowork): replace border with a hand-drawn SVG frame (RoughBox-style)
+     rather than a straight CSS border, to match the scribbled aesthetic. */
+}
+
+.scribbleBox.active { color: var(--color-accent-red); border-color: var(--color-accent-red); }
+.scribbleBox.disabled { opacity: 0.4; cursor: not-allowed; }
+.label { display: inline-block; }

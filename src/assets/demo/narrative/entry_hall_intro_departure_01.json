@@ -1,0 +1,37 @@
+{
+  "id": "entry_hall_intro_departure_01",
+  "class": "BiomeIntro",
+  "subtype": "Departure",
+  "biomes": [
+    "entry_hall"
+  ],
+  "origin_biomes": [
+    "town"
+  ],
+  "title": "The Threshold",
+  "description": "You have chosen your adventurer and given them what the stash could spare. They stand at the manor's open door now, breath fogging in the cold that leaks from inside. The entry hall waits beyond, its chandelier unlit, its dust undisturbed by any living thing. Whatever they learn in there will come back to you, whether they do or not. There is nothing left to do but send them in.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "draw_mode": "forced_only",
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Send the adventurer in",
+      "description": "The door is open. The manor is waiting.",
+      "resource_tests": [],
+      "outcomes": {
+        "success": {
+          "narrative": "From now on, they are you, and you are they. The Grafting is complete, and you can see from their eyes, making their memories yours. Now it is time to focus - their free will is intact, but you are a puppeteer pulling the strings. You hold a grip over their mind, and you step in over the threshold without looking back. The cold closes around you, and the expedition begins.",
+          "effects": [],
+          "force_next_draw": null
+        }
+      },
+      "id": "send_the_adventurer_in"
+    }
+  ],
+  "visual": {
+    "alt_text": "An adventurer silhouetted in the open doorway of a dark, dust-filled manor entry hall."
+  }
+}

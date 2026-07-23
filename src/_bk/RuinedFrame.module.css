@@ -1,0 +1,68 @@
+.frame {
+    position: relative;
+    isolation: isolate;
+    padding: var(--ruined-padding, 2rem);
+}
+
+.surface {
+    position: absolute;
+    z-index: -1;
+
+    /*
+     * Extending the surface outward prevents the displaced edge
+     * from revealing gaps around the wrapper.
+     */
+    inset: 8px;
+
+    background: var(--ruined-background, #d8c08a);
+
+    pointer-events: none;
+    will-change: filter;
+    overflow: hidden;
+}
+
+.damage {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    pointer-events: none;
+
+    /*
+     * These use the page background color to simulate chunks
+     * missing from the frame.
+     */
+    background:
+        radial-gradient(
+            ellipse 28px 17px at 0% 18%,
+            var(--page-background, white) 96%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 42px 24px at 100% 68%,
+            var(--page-background, white) 96%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 32px 21px at 72% 100%,
+            var(--page-background, white) 96%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 20px 34px at 0% 82%,
+            var(--page-background, white) 96%,
+            transparent 100%
+        );
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}

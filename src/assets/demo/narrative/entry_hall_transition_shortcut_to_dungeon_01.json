@@ -1,0 +1,29 @@
+{
+  "id": "entry_hall_transition_shortcut_to_dungeon_01",
+  "class": "Transition",
+  "subtype": "Shortcut",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Servants' Way",
+  "description": "In the dark below, you find a narrow ladder dropping straight down into the manor's depths - above you, the broken floor of the Entry Hall still creaking. The rungs are iron and cold, slick with a damp that has never been touched by light. A draft rising from below carries iron, old straw, and a stillness that sits inside the chest. Checking the surroundings, you are pretty sure that you'd be able to get back, but the ladder seems the most obvious way forward - you have no clue where it will lead though. As expendables Vessels are, you need to be realistic about your odds of success.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "draw_mode": "forced_only",
+  "force_next_draw": null,
+  "destinations": [
+    {
+      "label": "Keep descending towards the humid cold and the darkness below.",
+      "target_biome": "dungeon"
+    },
+    {
+      "label": "Climb back into the entry hall and keep exploring.",
+      "stay": true
+    }
+  ],
+  "visual": {
+    "alt_text": "A narrow ladder drops down into the shadows below."
+  }
+}

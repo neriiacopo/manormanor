@@ -1,0 +1,109 @@
+{
+  "id": "entry_hall_combat_threshold_warden_01",
+  "class": "Combat",
+  "subtype": "Boss",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Warden at the Threshold",
+  "description": "The figure stands at the far end of the entry hall, motionless between two collapsed coat-stands. It has the shape of a man dressed for a formal occasion - high collar, long coat, white gloves - but its proportions are wrong. The arms hang too low. The head tilts at an angle that suggests no neck bone is doing what it should. When you step forward, it turns toward you without moving its feet. There is no sound when it moves.",
+  "properties": {
+    "is_anchor": true,
+    "is_unique": true
+  },
+  "draw_mode": "forced_only",
+  "visual": {
+    "alt_text": "A tall figure in formal dress stands at the end of a ruined hall, arms hanging past its knees, head canted sharply to one side, facing forward with no visible face."
+  },
+  "enemy": {
+    "name": "The Threshold Warden",
+    "threat_type": "Spectral",
+    "health": 1,
+    "damage_pool": "1d8",
+    "standard_attack": {
+      "telegraph": "The Warden raises one long arm in a slow, deliberate arc, the white glove catching the grey light from the windows.",
+      "attack_label": "Damage Pool: 1d8 | Targets: Mind",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "id": "warden_sustained_gaze",
+        "display_name": "Sustained Gaze",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The Warden's head tilts further - past forty-five degrees, past ninety - until it is nearly upside down, and it watches you with whatever is behind that blank collar.",
+        "attack_label": "Damage Pool: 1d8+2 | Targets: Mind",
+        "dice_pool_override": "1d8+2",
+        "resource_target_override": "Spectral",
+        "effects": [],
+        "status_effects": [
+          {
+            "status": "frenzy",
+            "target": "player",
+            "amount": 1
+          }
+        ],
+        "priority": 0
+      },
+      {
+        "id": "warden_phasing_advance",
+        "display_name": "Phasing Advance",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 3
+          }
+        },
+        "telegraph": "The Warden steps forward - not walking, but arriving, the space between you collapsing without the intervening motion - and its gloved hands spread wide.",
+        "attack_label": "Damage Pool: 1d6 | Targets: Body",
+        "dice_pool_override": "1d6",
+        "resource_target_override": "Physical",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": [
+      {
+        "type": "reduce_per_die",
+        "value": 1
+      }
+    ]
+  },
+  "outcomes": {
+    "victory": {
+      "narrative": "The Warden does not fall. It folds - inward, corner by corner, like a sheet of paper being put away - and is gone. The entry hall is quiet. The coat-stands remain collapsed. Whatever it was guarding, it guarded alone.",
+      "effects": [
+        {
+          "resource": "Mind",
+          "delta": -1
+        },
+        {
+          "item_grant": {
+            "rarity": "common"
+          }
+        },
+        {
+          "add_to_registry": {
+            "category": "defeated_enemies",
+            "id": "entry_hall_combat_threshold_warden_01"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 12,
+            "max": 24
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": null,
+      "effects": []
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "id": "entry_hall_combat_door_crawler_02",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall"
+    ],
+  "title": "What Comes Under the Door",
+  "description": "You see the fingers first - too many, too long, pressing flat against the gap beneath the door as if testing whether the space is wide enough. It is. The thing that follows is pale and jointless in the wrong places, pulling itself through the narrow dark with something close to patience. By the time it is fully in the room with you, it has already risen to its full height, which is considerable.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "uncommon"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 2,
+            "max": 7
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Pale Crawler",
+    "threat_type": "Physical",
+    "health": 7,
+    "damage_pool": "2d4",
+    "standard_attack": {
+      "telegraph": "The Pale Crawler drops low and drives its too-many fingers into the floor, coiling to strike.",
+      "attack_label": "Damage Pool: 2d4 | Targets: Body",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "display_name": "Learned Angle",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The Pale Crawler tilts its head - a slow, mechanical rotation - and its too-many fingers begin to spread apart, each one finding a different angle of approach, as if it has learned the shape of your guard.",
+        "attack_label": "Damage Pool: 1d6+4 | Targets: Body",
+        "id": "the_pale_crawler_special_1",
+        "dice_pool_override": "1d6+4",
+        "resource_target_override": "Physical",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "id": "the_pale_crawler_special_3",
+        "display_name": "Limb Snare",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The Pale Crawler's fingers writhe and twist, reaching out to grasp your limbs and hold you in place. The thing is strong, and its grip is unyielding.",
+        "attack_label": "Damage Pool: 1d4 | Targets: Body",
+        "dice_pool_override": "1d4",
+        "resource_target_override": "Physical",
+        "effects": [{"type":"reduce_per_die", "value": 2}],
+        "status_effects": [
+          {
+            "status": "stun",
+            "target": "player",
+            "amount": 1
+          }
+        ],
+        "priority": 0
+      },
+      {
+        "display_name": "White-Still Stare",
+        "trigger": {
+          "type": "state",
+          "params": {
+            "resource": "Mind",
+            "operator": "lte",
+            "value": 4
+          }
+        },
+        "telegraph": "The Pale Crawler stops mid-lunge and unfolds upward to its full, terrible height, its blank face suddenly very close to yours, and you feel your thoughts go white and still like a rabbit in headlights.",
+        "attack_label": "Damage Pool: 1d6 | Targets: Mind",
+        "resource_target_override": "Spectral",
+        "id": "the_pale_crawler_special_2",
+        "dice_pool_override": "1d6",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "It does not rush. It does not need to.",
+  "visual": {
+    "image": "images/entry_hall_combat_door_crawler_02.png",
+    "alt_text": "A tall, white-limbed figure, impossibly thin, rising from the floor near a closed door. Its fingers are too many and too long."
+  }
+}

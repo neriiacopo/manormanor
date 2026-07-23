@@ -1,0 +1,66 @@
+{
+  "id": "entry_hall_event_locked_drawer_01",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Locked Drawer",
+  "description": "A writing desk stands by the cold hearth, its surface bare except for a thin film of dust undisturbed for years. One drawer sits locked, and the wood around the keyhole is scored with fresh scratches. Someone has been here recently, and they wanted inside. Whether they succeeded, you cannot tell.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Force the drawer open",
+      "description": "Apply what leverage you can to break the lock.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "The lock gives with a crack; inside lies a folded letter in a hand you do not recognize.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": 1
+            },
+            {
+              "item_grant": "fragment_journal"
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "Your grip slips and your hand drags across the splintered wood.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -1
+            }
+          ]
+        }
+      },
+      "id": "force_the_drawer_open"
+    },
+    {
+      "label": "Inspect the desk without forcing it",
+      "description": "Search the other drawers and the underside of the writing surface.",
+      "resource_tests": [],
+      "outcomes": {
+        "success": {
+          "narrative": "You find nothing of use, but the scratches around the lock are clearly fresh.",
+          "effects": []
+        }
+      },
+      "id": "inspect_the_desk_without_forcing_it"
+    }
+  ],
+  "visual": {
+    "alt_text": "An antique writing desk beside a cold stone hearth, one drawer sealed by a scratched and battered lock."
+  }
+}

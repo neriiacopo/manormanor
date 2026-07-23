@@ -1,0 +1,43 @@
+.text {
+    display: inline-block;
+    animation: squiggle-animation var(--squiggle-duration, 340ms) linear
+        infinite;
+    will-change: filter;
+}
+
+.filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+@keyframes squiggle-animation {
+    0% {
+        filter: var(--squiggle-filter-0);
+    }
+
+    25% {
+        filter: var(--squiggle-filter-1);
+    }
+
+    50% {
+        filter: var(--squiggle-filter-2);
+    }
+
+    75% {
+        filter: var(--squiggle-filter-3);
+    }
+
+    100% {
+        filter: var(--squiggle-filter-4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text {
+        animation: none;
+        filter: none;
+    }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "entry_hall_combat_closing_presence_07",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall",
+    "grand_hall"
+  ],
+  "title": "What Follows Behind You",
+  "description": "You become aware of it before you see it - a cold pressure at the back of your neck, a displacement in the air where something should not be. When you turn, the corridor appears empty. When you face forward again, it is closer. You hear nothing. You feel the distance shrinking between you and it, measured not in sound or sight but in the slow tightening of your thoughts.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "",
+      "effects": [
+        {
+          "item_grant": "smelling_salts"
+        },
+        {
+          "add_to_registry": {
+            "category": "defeated_enemies",
+            "id": "entry_hall_combat_closing_presence_07"
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Closing Thing",
+    "threat_type": "Spectral",
+    "health": 5,
+    "damage_pool": "1d4",
+    "standard_attack": {
+      "telegraph": "The cold at your back deepens - you feel it press against the edge of your mind.",
+      "attack_label": "Damage Pool: 1d4 | Targets: Mind",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "display_name": "Learned Stillness",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "You realize you haven't moved - haven't changed - and the thing behind you has learned the rhythm of your stillness.",
+        "attack_label": "Damage Pool: 1d6 | Targets: Mind",
+        "id": "the_closing_thing_special_1",
+        "dice_pool_override": "1d6",
+        "resource_target_override": "Spectral",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "display_name": "Final Touch",
+        "trigger": {
+          "type": "state",
+          "params": {
+            "resource": "Mind",
+            "operator": "lte",
+            "value": 4
+          }
+        },
+        "telegraph": "Your thoughts thin to almost nothing - and in that brittle silence, the Closing Thing finally touches you, not your skin but the space where your sense of self lives.",
+        "attack_label": "Damage Pool: 2d4 | Targets: Mind",
+        "id": "the_closing_thing_special_2",
+        "dice_pool_override": "2d4",
+        "resource_target_override": "Spectral",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "It does not stop. Whatever you do, it does not stop approaching.",
+  "visual": {
+    "alt_text": "A dimly lit corridor stretching into shadow, empty to all appearances - but the air behind the viewer warps faintly, a near-invisible mass of cold pressure drawing close."
+  }
+}

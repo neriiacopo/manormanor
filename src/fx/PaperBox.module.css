@@ -1,0 +1,42 @@
+.root {
+    --paper-base: #eee5d3;
+    --paper-light: #faf5e9;
+    --paper-dark: #d7c7ad;
+
+    position: relative;
+    isolation: isolate;
+
+    color: #3d352a;
+}
+
+.definitions {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.surface {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        112deg,
+        var(--paper-dark) 0%,
+        var(--paper-base) 22%,
+        var(--paper-light) 48%,
+        var(--paper-base) 76%,
+        var(--paper-dark) 100%
+    );
+
+    filter: var(--paper-filter);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}

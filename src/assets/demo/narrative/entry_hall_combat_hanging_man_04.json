@@ -1,0 +1,91 @@
+{
+  "id": "entry_hall_combat_hanging_man_04",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Figure on the Stairs",
+  "description": "Halfway up the grand staircase, a man hangs suspended from nothing. No rope, no hook - he simply hangs, feet dangling a foot above the step, head lolling against his shoulder. Then his fingers uncurl. His head rises. His eyes find yours, and you understand he has been waiting.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "common"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 1,
+            "max": 6
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Hanged Steward",
+    "threat_type": "Physical",
+    "health": 4,
+    "damage_pool": "1d4+2",
+    "standard_attack": {
+      "telegraph": "His arm swings out in a wide, boneless arc, fingers splayed and reaching for your throat.",
+      "attack_label": "Damage Pool: 1d4+2 | Targets: Body",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "display_name": "Wound Tight",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "His head snaps sideways with a wet crack, and his body begins to rotate slowly in place - as though some invisible hand is winding him tighter and tighter toward you.",
+        "attack_label": "Damage Pool: 1d6+2 | Targets: Body",
+        "id": "the_hanged_steward_special_1",
+        "dice_pool_override": "1d6+2",
+        "resource_target_override": "Physical",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "display_name": "Voiced Silence",
+        "trigger": {
+          "type": "state",
+          "params": {
+            "resource": "Mind",
+            "operator": "lte",
+            "value": 4
+          }
+        },
+        "telegraph": "His mouth opens wider than any living jaw should allow, and a sound pours out - not a scream, but the silence of every room you've walked through given voice.",
+        "attack_label": "Damage Pool: 1d4+2 | Targets: Mind",
+        "resource_target_override": "Spectral",
+        "id": "the_hanged_steward_special_2",
+        "dice_pool_override": "1d4+2",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "He descends the stairs without bending his knees.",
+  "visual": {
+    "image": "images/entry_hall_combat_hanging_man_04.png",
+    "alt_text": "A man in a servant's coat suspended mid-stair without support, arms beginning to rise, face tilted upward toward the viewer below."
+  }
+}

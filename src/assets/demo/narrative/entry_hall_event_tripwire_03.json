@@ -1,0 +1,107 @@
+{
+  "id": "entry_hall_event_tripwire_03",
+  "class": "Event",
+  "subtype": "Trap",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Thread Across the Threshold",
+  "description": "Your boot catches on something at ankle height. You stop. In the dark ahead, a thin cord runs taut between two iron wall-hooks — nearly invisible, angled to catch a moving foot. Whatever it connects to deeper in the shadows has not yet moved. You are still in the moment before.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Step back slowly and step over",
+      "description": "Retreat one careful inch at a time, then clear it cleanly.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 5
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You lift your foot free without disturbing the cord and step over it.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "Your heel clips the wire on the way back — a crack of sound, and then a heavy wooden beam swings from the dark above and catches your shoulder.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "step_back_slowly_and_step_over"
+    },
+    {
+      "label": "Trace the cord to find its trigger",
+      "description": "Follow the wire by touch in both directions before moving.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        },
+        {
+          "resource": "Mind",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "Your fingers find the anchor-point and you work the cord loose from its hook without springing it.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": 1
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "Your probing hand pulls the wrong way and the mechanism releases — a spray of iron tacks from a box above, several finding your forearm.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -3
+            }
+          ]
+        }
+      },
+      "id": "trace_the_cord_to_find_its_trigger"
+    },
+    {
+      "label": "Trigger it deliberately from distance",
+      "description": "Step back and throw something heavy at the cord.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 7
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "The thrown object catches the wire true and the beam swings harmlessly through the empty air ahead of you.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "The object misses, and you lean forward to see where it landed — into the cord, with your face.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "trigger_it_deliberately_from_distance"
+    }
+  ],
+  "visual": {
+    "alt_text": "A low dark corridor, a nearly invisible thread strung across the passage at ankle height. Iron hooks hold the cord taut against stone walls slick with damp."
+  }
+}

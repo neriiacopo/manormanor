@@ -1,0 +1,108 @@
+{
+  "id": "entry_hall_event_rotted_floor_01",
+  "class": "Event",
+  "subtype": "Hazard",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Floor Gives Way",
+  "description": "The boards here are dark with damp, bowed slightly in the middle. You hear them before you feel them — a low creak beneath your weight that drops in pitch. One step more and the groan becomes a crack. The gap below is black and deeper than it should be. Yet, in the far depths of the dark, you see a feeble light",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Peek into the shadows",
+      "description": "Shift your weight to the edges where the joists may still hold.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You find solid footing along the skirting and ease past the worst of it.",
+          "effects": [],
+          "force_next_draw": {"id": "entry_hall_transition_shortcut_to_dungeon_01"}
+        },
+        "failure": {
+          "narrative": "The dark beowA plank snaps beneath your heel and your leg drops through, the splintered edge tearing as you haul yourself clear.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "retreat_slowly_along_the_wall"
+    },
+    {
+      "label": "Run straight across before it collapses",
+      "description": "Cross fast. Speed before the rot can catch you.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 4
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You're across before the worst boards know you were there.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "You are fast but the floor is faster — your ankle turns in a shattering gap and you hit the far wall hard.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -1
+            }
+          ]
+        }
+      },
+      "id": "run_straight_across_before_it_collapses"
+    },
+    {
+      "label": "Find another route through the hall",
+      "description": "Backtrack and look for a path that avoids the damaged section entirely.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 7
+        },
+        {
+          "resource": "Mind",
+          "dc": 7
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "Behind a collapsed shelf you find a narrow service passage — cold, low, but solid underfoot.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": 1
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "There is no other way. You have wasted time circling back, and the hall feels smaller for it.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "find_another_route_through_the_hall"
+    }
+  ],
+  "visual": {
+    "alt_text": "A dim entrance hall with a buckled section of flooring at its centre, dark water stains spreading outward from a jagged split in the boards. Blackness visible beneath, with a faint glow emanating from the depths."
+  }
+}

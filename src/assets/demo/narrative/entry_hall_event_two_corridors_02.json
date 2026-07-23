@@ -1,0 +1,144 @@
+{
+  "id": "entry_hall_event_two_corridors_02",
+  "class": "Event",
+  "subtype": "Choice",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Two Corridors, Neither Right",
+  "description": "The hallway in front of you splits in two: your eyes go back and forth o the two option.\nThe left passage slopes downward into a darkness that smells of damp stone and something older. The right passage is level, but you can't but notice the wrong geometry of the space. The floor there is wrong — the boards run in the wrong direction, and the walls seem to lean slightly inward.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "visual": {
+    "alt_text": "A hallway junction lit by faint, sourceless light. The left passage descends into damp shadow; the right passage is level but the walls press inward at an unnatural angle."
+  },
+  "beats": [
+    {
+      "id": "start",
+      "description": "You stand at the junction and ponder you options. Neither way is safe. Neither way is closed.",
+      "choices": [
+        {
+          "label": "Study both passages before committing",
+          "description": "Spend time at the junction reading whatever signs the manor has left.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 7
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You notice footprints in the dust of the left passage - old ones, but they came back the same way they went, which tells you something. The right passage is immaculate, but you clearly sense the influence of Magic here.",
+              "effects": [],
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "The longer you look, the more the twisted corridor on the right gives you vertigo and a sense of nausea. The whole area feels suffocating, and you prefer to look away, leaving this junction for a future exploration.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ]
+            }
+          },
+          "id": "study_both_passages_before_committing"
+        },
+        {
+          "label": "Take the left passage, downward",
+          "description": "Descend into the damp dark, trusting your body to manage what your mind cannot.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The slope levels out and you find solid footing on the far side, breathing hard but intact.",
+              "effects": [],
+              "force_next_draw": {
+                "id": "entry_hall_event_forgotten_cellar_01"
+              }
+            }
+          },
+          "id": "take_the_left_passage_downward"
+        },
+        {
+          "label": "Take the right passage, into the lean",
+          "description": "",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The moment you try to cross the threshold, a blast of force pushes you back and slams you into the stone wall behind you, craking a couple of ribs and making you cough up blood.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -5
+                }
+              ],
+              "next_beat": "beat_3"
+            }
+          },
+          "id": "take_the_right_passage_into_the_lean"
+        }
+      ]
+    },
+    {
+      "id": "beat_2",
+      "description": "You cannot fully picture why the space looks distorted, but after a moment you notice a Glyph of warding in the lower corner of the threshold, and something kicks in your memories as an apprentice of the Order. Warding glyphs are magical wards used to seal areas, and act as a perpetual forcefield that distorts the eyesight from one side to the other. Typically, this is true in the locked direction - meaning that someone, likely a skilled Magic user, didn't want intruders to access this area. Trying to cross it would be a very bad idea.",
+      "choices": [
+        {
+          "id": "take_the_other_passage",
+          "label": "Take the other passage",
+          "description": "",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You descend into the damp dark, trusting your body to manage the increasing tension on your mind.",
+              "effects": [],
+              "force_next_draw": {
+                "id": "entry_hall_event_forgotten_cellar_01"
+              }
+            }
+          }
+        },
+        {
+          "id": "turn_back",
+          "label": "Turn back",
+          "description": "",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "A forcefield on one side and a dark path descending below, you prefer to consider other options - this area of the Manor looks deliberately built to keep people far away from it, and you'll happily respect the architect's intent.",
+              "effects": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "beat_3",
+      "description": "The vision blurred by the impact, you notice that in the lower corner of the doorway there is a set of runes likely responsible of the forcefield that threw you into the wall. Too scared to get near it again, you evaluate whether to go downstairs or abandoning the area.",
+      "choices": [
+        {
+          "id": "descend_into_the_dark",
+          "label": "Descend into the dark",
+          "description": "",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The slope levels out and you find solid footing on the far side, breathing hard but intact.",
+              "effects": []
+            }
+          }
+        },
+        {
+          "id": "go_back_and_keep_exploring",
+          "label": "Go back and keep exploring",
+          "description": "",
+          "resource_tests": [],
+          "outcomes": {}
+        }
+      ]
+    }
+  ]
+}

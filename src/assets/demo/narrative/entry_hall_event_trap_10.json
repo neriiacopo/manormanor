@@ -1,0 +1,110 @@
+{
+  "id": "entry_hall_event_trap_10",
+  "class": "Event",
+  "subtype": "Trap",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Rug Gives Way",
+  "description": "The floor looks solid. It is not. Your foot comes down on the moth-eaten runner and the boards beneath flex sharply — a hollow sound, a crack, and then the whole section tilts. The gap beneath is black and deeper than it should be. You have perhaps a second.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "choices": [
+    {
+      "label": "Throw your weight back immediately",
+      "description": "Drop your momentum and lunge backward before the boards give entirely.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You land hard on solid floor, breath knocked out, but safe.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "Your heel catches the edge and you go down, one leg plunging into the gap before you drag yourself clear.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "throw_your_weight_back_immediately"
+    },
+    {
+      "label": "Leap forward across the gap",
+      "description": "Push off the failing boards and clear the rotten section entirely.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 8
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You clear it cleanly, landing in a crouch on solid stone beyond the runner. You mentally clap at your own athleticism.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": 2
+            },
+            {
+              "resource": "Determination",
+              "delta": 1
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "You do not get enough distance. The far edge crumbles and you drop, catching a beam with both arms before the dark takes you.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -3
+            }
+          ]
+        }
+      },
+      "id": "leap_forward_across_the_gap"
+    },
+    {
+      "label": "Drop flat and distribute your weight",
+      "description": "Go to the floor immediately, spreading yourself across the failing section.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 5
+        },
+        {
+          "resource": "Mind",
+          "dc": 5
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "The boards hold under your spread weight. You crawl to solid ground, slow and deliberate.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "The instinct to scramble overrides the plan. One board cracks under a knee and the splinters open your leg.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -1
+            }
+          ]
+        }
+      },
+      "id": "drop_flat_and_distribute_your_weight"
+    }
+  ],
+  "visual": {
+    "alt_text": "A grand entry hall floor, an old rug peeling back at a splintered gap in the boards, darkness visible beneath. The edges of the hole are pale and raw."
+  }
+}

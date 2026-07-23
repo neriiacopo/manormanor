@@ -1,0 +1,50 @@
+/* === The Manor — design tokens ===
+   Values sourced from the-manor-ui-style-board.md (sampled directly from
+   the Illustrator mockups, not eyeballed). This file is the single source
+   of truth — components should reference these vars, never hardcode hex
+   or font-family strings.
+*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    background-color: rgb(55, 55, 55);
+    /* --- Color --- */
+    --color-parchment-light: #ece3d8;
+    --color-parchment-mid: #e6dac5;
+    --color-parchment-dark: #dbcfbd;
+    --color-ink: #0a0a0a;
+    --color-combat-void: #1a1a1a;
+    --color-vignette: #4b3f3d;
+    --color-accent-red: #e21415;
+    --color-stat-body: #a83d3d;
+    --color-stat-defense: #7290bd;
+    --color-stat-determination: #bd9834;
+    --color-stat-stamina: #79a971;
+    --color-dark: #0e0e0e;
+    /* --- Typography roles (see style-board §2) ---
+     Rock Salt & IM Fell English are Google Fonts, safe to self-host.
+     TODO(cowork): confirm Aktura's license/hosting before shipping —
+     unconfirmed at scaffold time. */
+    --font-scribble: "Rock Salt", cursive; /* player actions */
+    --font-gothic: "Aktura", serif; /* room/screen titles, credits */
+    --font-scribe: "IM Fell English", serif; /* narrative + enemy text */
+
+    /* --- Game View proportions (style-board §4) ---
+     ProgressArea/MainArea split the full viewport height via flex-grow.
+     SubArea (SectionArea + ToggleBar) is no longer part of that split —
+     it floats on top as an overlay (see SubArea.module.css) so it never
+     resizes MainArea. */
+    --gv-progress-flex: 0.5;
+    --gv-main-flex: 10;
+
+    /* --- Sub area (floating overlay, anchored to the bottom) --- */
+    --sub-toggle-height: 64px; /* fixed menu toggle bar */
+    --section-area-height: 30dvh; /* SectionArea's height above the toggle bar */
+
+    /* --- Misc --- */
+    --radius-soft: 2px; /* most surfaces use RoughBox's clip-path, not radius */
+}

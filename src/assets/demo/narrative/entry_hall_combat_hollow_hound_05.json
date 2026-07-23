@@ -1,0 +1,97 @@
+{
+  "id": "entry_hall_combat_hollow_hound_05",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall",
+    "gardens"
+  ],
+  "title": "What the Dog Became",
+  "description": "It was a dog, once. You can tell by the shape of the skull, the way it holds its forelegs - but the proportions have shifted, the jaw unhinged too wide, the eyes set too far back in the sockets. It does not growl. It watches you with a stillness that no dog ever had.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "common"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 1,
+            "max": 6
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Hollow Hound",
+    "threat_type": "Physical",
+    "health": 5,
+    "damage_pool": "1d6+1",
+    "standard_attack": {
+      "telegraph": "It drops its shoulders and surges forward, jaw splitting wider than it should.",
+      "attack_label": "Damage Pool: 1d6+1 | Targets: Body",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "display_name": "Unhinged Pounce",
+        "trigger": {
+          "type": "tactical",
+          "params": {
+            "check": "player_defended_last_round"
+          }
+        },
+        "telegraph": "It has been watching you retreat behind your guard. Something shifts in its posture - the jaw unhinges further with a sound like wet rope snapping, and it coils impossibly low against the floorboards.",
+        "attack_label": "Damage Pool: 2d6+1 | Targets: Body",
+        "id": "the_hollow_hound_special_1",
+        "dice_pool_override": "2d6+1",
+        "status_effects": [
+          {
+            "status": "poison",
+            "target": "player",
+            "amount": 1
+          }
+        ],
+        "resource_target_override": "Physical",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "display_name": "Still Approach",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "It stops moving entirely. The silence thickens like fog. Then it is simply closer than it was - no visible transition, no sound - and its empty eyes are fixed on something behind your face.",
+        "attack_label": "Damage Pool: 1d6+1 | Targets: Mind",
+        "resource_target_override": "Spectral",
+        "id": "the_hollow_hound_special_2",
+        "dice_pool_override": "1d6+1",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "The stillness breaks all at once.",
+  "visual": {
+    "image": "images/entry_hall_combat_hollow_hound_05.png",
+    "alt_text": "A dog-shaped thing in a dim entryway, jaw unhinged too wide, eyes set wrong, body coiled to lunge."
+  }
+}

@@ -1,0 +1,88 @@
+.stats {
+  width: 100%;
+}
+
+.inner {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  padding: 16px;
+  font-family: var(--font-scribe);
+}
+
+.portrait {
+  flex: 0 0 auto;
+}
+
+.portrait img {
+  display: block;
+  width: 108px;
+  height: 108px;
+  object-fit: cover;
+  border: 4px solid var(--color-ink);
+}
+
+.bars {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto auto auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.row[data-stat='body']          { --stat-color: var(--color-stat-body); }
+.row[data-stat='defense']       { --stat-color: var(--color-stat-defense); }
+.row[data-stat='determination'] { --stat-color: var(--color-stat-determination); }
+.row[data-stat='stamina']       { --stat-color: var(--color-stat-stamina); }
+
+.icon {
+  color: var(--stat-color);
+}
+
+.label {
+  color: var(--stat-color);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.segments {
+  display: flex;
+  gap: 3px;
+  min-width: 0;
+}
+
+.segment {
+  flex: 1;
+  min-width: 3px;
+  height: 16px;
+  background: var(--color-ink);
+}
+
+.segment.filled {
+  background: var(--stat-color);
+}
+
+.justConsumed {
+  outline: 2px solid var(--color-accent-red);
+  outline-offset: 1px;
+}
+
+.delta {
+  color: var(--color-accent-red);
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+.fraction {
+  color: var(--stat-color);
+  font-weight: 700;
+  white-space: nowrap;
+}

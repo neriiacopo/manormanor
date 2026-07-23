@@ -1,0 +1,5 @@
+.progressArea {
+    flex: var(--gv-progress-flex);
+    min-height: 0;
+    width: 100dvw;
+}

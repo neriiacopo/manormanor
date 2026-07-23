@@ -1,0 +1,91 @@
+{
+  "id": "entry_hall_combat_wall_rat_01",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall",
+    "sewer_system"
+  ],
+  "title": "Something in the Walls",
+  "description": "The wall paneling splits before you hear it - a low, wet pressure from inside the plaster, then a sound like cracking bone. The thing that pushes through is a rat, or was. Its body is wrong in proportion, shoulders wider than the gap it opens, legs bent at angles that should not bear weight. It finds the floor anyway. It looks at you with eyes that are too many and too small, and its breathing fills the hall.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "common"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 1,
+            "max": 6
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Wall Rat",
+    "threat_type": "Physical",
+    "health": 4,
+    "damage_pool": "1d6",
+    "standard_attack": {
+      "telegraph": "The Wall Rat drops its head low and lunges, teeth first.",
+      "attack_label": "Damage Pool: 1d6 | Targets: Body",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "display_name": "Pattern Bite",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The Wall Rat freezes mid-step, its many eyes tracking something - not you, but the space you keep returning to, the pattern you've made predictable.",
+        "attack_label": "Damage Pool: 1d8 | Targets: Body",
+        "id": "the_wall_rat_special_1",
+        "dice_pool_override": "1d8",
+        "resource_target_override": "Physical",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "display_name": "Reedy Whine",
+        "trigger": {
+          "type": "state",
+          "params": {
+            "resource": "Mind",
+            "operator": "lte",
+            "value": 4
+          }
+        },
+        "telegraph": "The Wall Rat's breathing changes - a thin, reedy whine that bores into the soft place behind your eyes, and you realize those too-small eyes are not looking at your body anymore.",
+        "attack_label": "Damage Pool: 1d6 | Targets: Mind",
+        "resource_target_override": "Spectral",
+        "id": "the_wall_rat_special_2",
+        "dice_pool_override": "1d6",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "It is faster than it has any right to be.",
+  "visual": {
+    "alt_text": "A rat far too large to exist forces itself out of a split wall panel, its many small eyes catching the dim light of the entry hall."
+  }
+}

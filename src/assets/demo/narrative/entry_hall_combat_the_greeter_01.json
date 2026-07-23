@@ -1,0 +1,114 @@
+{
+  "id": "entry_hall_combat_the_greeter_01",
+  "class": "Combat",
+  "subtype": "Boss",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Thing That Welcomed You",
+  "description": "The doors behind you have already swung shut. Something crouches at the far end of the hall, beneath the dead chandelier, where the light has no interest in reaching. It is large in the way that wrong things are large — not tall, but wide, dense, occupying more space than its shape should allow. Four limbs end in hands, and each hand has too many fingers, and each finger bends the wrong way. It has noticed you.",
+  "properties": {
+    "is_anchor": true,
+    "is_unique": true
+  },
+  "draw_mode": "forced_only",
+  "enemy": {
+    "name": "The Greeter",
+    "threat_type": "Physical",
+    "health": 1,
+    "damage_pool": "1d6",
+    "standard_attack": {
+      "telegraph": "It drops onto all four limbs and drags itself forward, knuckles grinding against the stone floor.",
+      "attack_label": "Damage Pool: 1d6 | Targets: Body",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "id": "greeter_relentless_charge",
+        "display_name": "Relentless Charge",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 3
+          }
+        },
+        "telegraph": "The thing exhales — a long, wet sound — and its shoulders drop low, haunches rising. Every joint in its body pops in sequence, like a mechanism being cocked.",
+        "attack_label": "Damage Pool: 2d6 | Targets: Body",
+        "dice_pool_override": "2d6",
+        "resource_target_override": "Physical",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "id": "greeter_patient_seize",
+        "display_name": "Patient Seize",
+        "trigger": {
+          "type": "tactical",
+          "params": {
+            "check": "player_defended_last_round"
+          }
+        },
+        "telegraph": "It reads you. Its head tilts — too far, past ninety degrees — and it goes still, watching the shape of your guard with those pale, unblinking eyes.",
+        "attack_label": "Damage Pool: 1d6+2 | Targets: Body",
+        "dice_pool_override": "1d6+2",
+        "resource_target_override": "Physical",
+        "effects": [],
+        "status_effects": [
+          {
+            "status": "dread",
+            "target": "player",
+            "amount": 2
+          }
+        ],
+        "priority": 0
+      }
+    ],
+    "effects": [
+      {
+        "type": "reduce_flat",
+        "value": 1
+      }
+    ]
+  },
+  "outcomes": {
+    "victory": {
+      "narrative": "It collapses against the base of the stairs, its limbs folding inward at last in the direction they were always meant to fold. The hall is quiet. The doors ahead are open.",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "uncommon"
+          }
+        },
+        {
+          "add_to_registry": {
+            "category": "defeated_enemies",
+            "id": "entry_hall_combat_the_greeter_01"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 12,
+            "max": 24
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "You find a gap — a servant's door, low and half-rotted — and you throw yourself through it. Something scrapes the frame behind you, but does not follow. Not yet.",
+      "effects": [
+        {
+          "resource": "Body",
+          "delta": -2
+        },
+        {
+          "resource": "Mind",
+          "delta": -1
+        }
+      ]
+    }
+  },
+  "visual": {
+    "alt_text": "A massive hunched figure crouches in a darkened entry hall beneath an unlit chandelier. Its four limbs end in wide, malformed hands. Its pale eyes catch no light."
+  }
+}

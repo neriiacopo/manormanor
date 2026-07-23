@@ -1,0 +1,88 @@
+{
+  "id": "entry_hall_event_whispers_01",
+  "class": "Event",
+  "subtype": "Hazard",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Whispers at the Edge",
+  "description": "The hall is still, but not silent. Something at the threshold of hearing turns and shifts, just below the sound of your own breathing. When you hold your breath, the whispering grows more distinct — syllables, almost words, almost familiar. You cannot tell which direction it comes from.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Walk through without listening",
+      "description": "Fix your eyes forward and do not give the sound your attention.",
+      "resource_tests": [
+        {
+          "resource": "Mind",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You cross the hall. The whispers thin and drop away behind you like smoke.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "The harder you ignore it, the louder it becomes, until you reach the far end unsure of your own name.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "walk_through_without_listening"
+    },
+    {
+      "label": "Stand still and listen closely",
+      "description": "Hold your breath and concentrate on what the sound is trying to say.",
+      "resource_tests": [
+        {
+          "resource": "Mind",
+          "dc": 8
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "One phrase resolves — toneless, dry, repeated — and then the whispering stops entirely, as though it said what it needed to.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -1
+            }
+            , 
+            {
+              "add_to_registry": {
+                    "category": "run_facts",
+                    "id": "heard_the_whispers"
+                  }
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "The whispering rushes inward all at once, and for a moment you are not standing in the hall at all.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -3
+            }
+          ],
+          "force_next_draw": {
+            "class": "Combat",
+            "scope": "current_biome"
+          }
+        }
+      },
+      "id": "stand_still_and_listen_closely"
+    }
+  ],
+  "visual": {
+    "alt_text": "A wide entry hall in near-darkness, the far doorway barely visible. A figure stands motionless in the middle, lamp held low, listening."
+  }
+}

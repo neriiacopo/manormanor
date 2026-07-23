@@ -1,0 +1,16 @@
+.ruined {
+    position: relative;
+
+    mask-image: var(--ruined-mask);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 100% 100%;
+    mask-mode: alpha;
+
+    -webkit-mask-image: var(--ruined-mask);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: 100% 100%;
+
+    overflow: hidden;
+}

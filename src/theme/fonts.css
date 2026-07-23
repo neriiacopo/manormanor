@@ -1,0 +1,35 @@
+/* === The Manor — font faces ===
+   Local files in src/assets/fonts, referenced by tokens.css font-family vars.
+*/
+
+@font-face {
+    font-family: "Aktura";
+    src: url("../assets/fonts/Aktura-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IM Fell English";
+    src: url("../assets/fonts/IMFellEnglish-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IM Fell English";
+    src: url("../assets/fonts/IMFellEnglish-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Rock Salt";
+    src: url("../assets/fonts/RockSalt-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}

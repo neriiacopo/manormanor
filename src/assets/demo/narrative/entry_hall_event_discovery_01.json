@@ -1,0 +1,319 @@
+{
+  "id": "entry_hall_event_discovery_01",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The kitchen quarters",
+  "description": "The smell that comes of the door is unexpected considering all you've seen in these halls: tallow smoke, old grease, something organic and warm. These look like the servants' kitchens of the manor, and the fact they seem to be in use is not coherent with everything you've seen up to now - you can't but be suspicious...",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "draw_mode": "forced_only",
+    "hidden_when": {
+    "chapter_below": 8
+    },
+  "visual": {
+    "image": "images/entry_hall_event_discovery_01.png",
+    "alt_text": "A narrow servants’ kitchen hidden deep within a decaying manor. Heavy wooden doors stand partially open, spilling weak candlelight into a dark stone corridor. Inside, iron pots still hang above a blackened hearth."
+  },
+  "beats": [
+    {
+      "id": "beat_1",
+      "description": "The kitchen is large and low-ceilinged, Iron hooks line the walls, with organic material hanging from them. A chairs sit slightly pulled back as if someone has just risen from them - and on top of the table a single candle burns low near the far wall, illuminating warped cookware and damp stone. On the table, you notice a cloth bundle, tied with a strip of leather. You have to choose where your attention goes.",
+      "choices": [
+        {
+          "id": "examine_the_bundle",
+          "label": "Open the cloth bundle on the table",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": null,
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 4
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "Your hands are steady as you work the leather knot loose. Inside: a small glass vial stoppered with wax, filled with something dark and viscous, and a handful of tarnished coins. A healer's preparation, or something older. You pocket it all without dwelling on the question.",
+              "effects": [
+                {
+                  "item_grant": "bitter_tincture"
+                },
+                {
+                  "currency_grant": {
+                    "currency": "gold",
+                    "min": 2,
+                    "max": 5
+                  }
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            },
+            "failure": {
+              "narrative": "Your hands are less steady than you would like. You work the knot loose, but the candle gutters at the wrong moment and the vial inside tips and rolls from the table before you can catch it. It strikes the flagstone and the stopper holds, but the contents are half-gone by the time you retrieve it. You take what remains.",
+              "effects": [
+                {
+                  "item_grant": "manor_dust"
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            }
+          }
+        },
+        {
+          "id": "study_the_candle",
+          "label": "Leave both alone and study the burning candle",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": null,
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 5
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The candle burns with a steadiness that the room's cold air should not allow. The wax pool is small — it was lit within the hour. Whatever did that is not here now. You are about to turn back and you notice something below the table; you pick up the can and look closely: it is a trapdoor.",
+              "effects": [],
+              "force_next_draw": null,
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "The candle burns with a steadiness that the room's cold air should not allow. The wax pool is small — it was lit within the hour. Whatever did that is not here now.",
+              "effects": [],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "beat_2",
+      "description": "You move the table out of the way and reveal the trapdoor: it looks heavy, with a big iron ring that can be used to open it.",
+      "choices": [
+        {
+          "id": "wrench_open_the_trapdoor",
+          "label": "Force the trapdoor fully open and look below",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 7
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The trapdoor resists, then gives with a groan of rusted iron. Below: a shallow root cellar, shelves of dark glass bottles, most broken. One remains intact. You drop down, retrieve it, and climb back out before the smell settles into your chest.",
+              "effects": [
+                {
+                  "item_grant": "regen_draught"
+                },
+                {
+                  "item_grant": "liquid_armor"
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_4"
+            },
+            "failure": {
+              "narrative": "You do your best, but the trapdoor does not move. You groan as the pain in your back intensifies, then decide to leave it alone and look for useful items somewhere else.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            }
+          }
+        },
+        {
+          "id": "lift_open_with_lever",
+          "label": "Find something to use as a lever.",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": [
+            {
+              "resource": "Stamina",
+              "amount": 3
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You look around and find a sturdy piece of wood that can serve as a lever. You pry open the trapdoor, revealing a shallow root cellar, shelves of dark glass bottles, most broken. Two remain intact. You drop down, retrieve it, and climb back out before the smell settles into your chest.",
+              "effects": [
+                {
+                  "item_grant": "regen_draught"
+                },
+                {
+                  "item_grant": "liquid_armor"
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_4"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "beat_3",
+      "description": "At the far end of the kitchen, behind the cold hearth, a second room opens up. Scratched into the stone lintel above it, almost lost to grime: a crude arrow, and beside it, a single word that might once have read LARDER. You take a step forward and inspect the surroundings.",
+      "choices": [
+        {
+          "id": "search_the_hearth_ash",
+          "label": "Sift through the hearth ash before leaving",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": null,
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 3
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The ash is cold and dry — nothing has burned here in months. You wonder why, given the traces of recent activity. Your fingers find something hard near the back: a short blade, its edge dulled by heat but its spine intact. You pocket it and move on.",
+              "effects": [
+                {
+                  "item_grant": "throwing_knife"
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_4"
+            },
+            "failure": {
+              "narrative": "The ash is cold and dry — nothing has burned here in months. You wonder why, given the traces of recent activity. Your fingers find something hard in the back but as you reach for it, you feel a quick jolt of pain in your fingertips - you cut yourself with the blade of what reveals to be a throwing knife. You curse under your breath, clean your wound, and pocket the knife.",
+              "effects": [
+                {
+                  "item_grant": "throwing_knife"
+                },
+                {
+                  "resource": "Body",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_4"
+            }
+          }
+        },
+        {
+          "id": "climb_onto_the_worktop",
+          "label": "Check the high shelves above the preparation counter",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": null,
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You haul yourself up onto the stone counter, sending a rack of hooks swaying. The topmost shelf holds a small ceramic pot with a sealed lid. Inside: a rendered balm, still faintly fragrant. The unexpected loot gives you a boost of confidence: you pack your things and press on with increased determination.",
+              "effects": [
+                {
+                  "item_grant": "healing_balm"
+                },
+                {
+                  "resource": "Determination",
+                  "delta": 1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_4"
+            },
+            "failure": {
+              "narrative": "You get up onto the counter but the stone is slick with old grease and you overreach. The ceramic pot you were after tips and shatters on the floor below. Nothing salvageable. You drop down and leave the kitchen with nothing but a bruised palm.",
+              "effects": [
+                {
+                  "resource": "Stamina",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_4"
+            }
+          }
+        },
+        {
+          "id": "leave_the_kitchen",
+          "label": "Take nothing more and pass through the east passage",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": null,
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You leave the candle burning behind you. The passage east is dry and straight, and it carries you away from the smell. You do not look back to see whether the light is still there when you reach the far end.",
+              "effects": [],
+              "force_next_draw": null
+            },
+            "failure": {
+              "narrative": "You leave the candle burning behind you. The passage east is dry and straight, and it carries you away from the smell. You do not look back to see whether the light is still there when you reach the far end.",
+              "effects": [],
+              "force_next_draw": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "beat_4",
+      "description": "You hear some noises coming from the corridor you just came from. They sound like footsteps, and they are getting louder. You have to decide quickly what to do.",
+      "choices": [
+        {
+          "id": "get_out_of_the_way",
+          "label": "Move out of the way",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": null,
+          "outcomes": {
+            "success": {
+              "narrative": "You sneak out of the way unnoticed",
+              "force_next_draw": null
+            }
+          }
+        },
+        {
+          "id": "hide_and_wait",
+          "label": "Hide and wait",
+          "description": "",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_cost": null,
+          "outcomes": {
+            "success": {
+              "narrative": "You hide and wait, but the footsteps get louder and louder until they are right outside the kitchen. You hold your breath, hoping that whatever is coming won't notice you. The footsteps stop right outside the door, and you can hear someone breathing heavily. You take the element of surprise and strike first",
+              "force_next_draw": {
+                "id": "entry_hall_combat_elite_01"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

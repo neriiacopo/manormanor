@@ -1,0 +1,124 @@
+{
+  "id": "entry_hall_combat_elite_01",
+  "class": "Combat",
+  "subtype": "Elite",
+  "draw_mode": "forced_only",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Butcher of the Hall",
+  "description": "You hear it before you see it: a wet, rhythmic sound, like meat pulled from bone, echoing through the Entry Hall. The figure stands near the base of the grand staircase — wide as a doorframe, shoulders rolled forward under a stained leather apron that was not made for a human torso. Its arms are too long. Its hands end in curved blades of fused, blackened bone that scrape the flagstones as it turns. It does not rush. It simply orients toward you, the way a door swings on a hinge.",
+  "properties": {
+    "anchor": false,
+    "unique": false
+  },
+  "enemy": {
+    "name": "The Butcher",
+    "threat_type": "Physical",
+    "health": 18,
+    "damage_pool": null,
+    "effects": [],
+    "standard_attack": {
+      "telegraph": "The Butcher raises one boneblade arm to shoulder height, the tip trailing a slow arc across the stone floor.",
+      "attack_label": "Damage Pool: none | Targets: Body",
+      "effects": [{
+        "type": "reduce_flat",
+        "value": 2
+      }]
+    },
+    "special_attacks": [
+      {
+        "id": "butcher_relentless_advance",
+        "display_name": "Relentless Advance",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 1
+          }
+        },
+        "telegraph": "The Butcher lowers its head and begins to move without pause, the boneblades dragging two parallel lines into the flagstones. It does not slow.",
+        "attack_label": "Damage Pool: 2d4 | Targets: Body",
+        "dice_pool_override": "2d4",
+        "resource_target_override": "Physical",
+        "effects": [
+          {
+            "type": "take_flat",
+            "value": 1
+          }
+        ],
+        "status_effects": [],
+        "priority": 0
+      },
+      {
+        "id": "butcher_wide_cleave",
+        "display_name": "Wide Cleave",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The Butcher reads your position. Both arms sweep outward in a slow preparatory rotation, boneblades level at throat height.",
+        "attack_label": "Damage Pool: 1d8 | Targets: Body",
+        "dice_pool_override": "1d8",
+        "resource_target_override": "Physical",
+        "effects": [
+          {
+            "type": "reduce_flat",
+            "value": 2
+          }
+        ],
+        "status_effects": [
+          {
+            "status": "stun",
+            "target": "player",
+            "amount": 1
+          }
+        ],
+        "priority": 0
+      }
+    ]
+  },
+  "outcomes": {
+    "victory": {
+      "effects": [
+        {
+          "resource": "Determination",
+          "delta": 2
+        },
+        {
+          "item_grant": "butchers_gauntlets"
+        },
+        {
+          "add_to_registry": {
+            "category": "defeated_enemies",
+            "id": "entry_hall_combat_elite_01"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 6,
+            "max": 14
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "effects": [
+        {
+          "resource": "Body",
+          "delta": -2
+        },
+        {
+          "resource": "Determination",
+          "delta": -2
+        }
+      ]
+    }
+  },
+  "visual": {
+    "image": "images/entry_hall_combat_elite_01.png",
+    "alt_text": "A massive figure in a stained leather apron stands between you and the kitchen's door. His face is covered by a black hood. Bulky arms, hands ending in curved blades of fused blackened bone that score the flagstones."
+  }
+}

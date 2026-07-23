@@ -1,0 +1,108 @@
+{
+  "id": "entry_hall_combat_volpo",
+  "class": "Combat",
+  "subtype": "Standard",
+  "draw_mode": "forced_only",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Neither a friend nor an enemy",
+  "description": "A proud man, with a knife in its sheath, assumes a fighting stance showing his fists. He has a ferine attitue, with clea intent for the thrill of a fight. it is you and him now, and there is not much to do else than fight. You put up your guard.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "Volpo falls to the ground smiling",
+      "effects": [
+        {
+          "item_grant": "bone_knife"
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 7,
+            "max": 7
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "Volpo reacts to your escape with an expression of contempt",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "Volpo",
+    "threat_type": "Physical",
+    "health": 8,
+    "damage_pool": "1d2",
+    "standard_attack": {
+      "telegraph": "Volpo approaches confidently, he doesn't seem to want to use the knife and prepares to throw a punch",
+      "attack_label": "Damage Pool: 1d2 | Targets: Body",
+      "effects": [],
+      "status_effects": []
+    },
+    "special_attacks": [
+            {
+        "display_name": "Hit me!",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "Volpo spreads his arms and asks you to hit him",
+        "attack_label": "Damage Pool: none | Targets: Body",
+        "id": "volpo_special_0",
+        "dice_pool_override": null,
+        "resource_target_override": "Physical",
+        "effects": [      {
+        "type": "reduce_flat",
+        "value": 1
+      }],
+        "priority": 0,
+        "status_effects": [
+          {
+            "status": "regen",
+            "target": "enemy",
+            "amount": 3
+          }
+        ],
+        "once": true
+      },
+      {
+        "display_name": "Hit me!",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "Volpo spreads his arms and asks you to hit him",
+        "attack_label": "Damage Pool: 1d3+2 | Targets: Body",
+        "id": "volpo_special_1",
+        "dice_pool_override": "1d3+2",
+        "resource_target_override": "Physical",
+        "effects": [],
+        "priority": 0,
+        "status_effects": [
+          {
+            "status": "disarm",
+            "target": "player",
+            "amount": 1
+          }
+        ],
+        "once": true
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "It does not rush. It does not need to.",
+  "visual": {
+    "image": "images/entry_hall_combat_volpo.png",
+    "alt_text": "A proud man, with a knife in its sheath, assumes a fighting stance showing his fists"
+  }
+}

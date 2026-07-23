@@ -1,0 +1,244 @@
+.button {
+    --button-ink: #eeeeee;
+    --button-shadow: var(--color-accent-red);
+
+    --shadow-x: 5px;
+    --shadow-y: -5px;
+
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    min-width: max-content;
+    padding: 0.2em 0.14em 0.48em;
+
+    border: 0;
+    background: transparent;
+    color: var(--button-ink);
+
+    font-family: var(--font-scribble);
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+    isolation: isolate;
+
+    /*
+     * Preserve the irregular dimensions of handwritten fonts rather than
+     * forcing a conventional button box.
+     */
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.label {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+
+    /*
+     * Both text copies occupy exactly the same grid cell.
+     */
+    grid-template-areas: "text";
+    white-space: nowrap;
+}
+
+.foreground,
+.shadow {
+    grid-area: text;
+    display: block;
+}
+
+.foreground {
+    position: relative;
+    z-index: 2;
+
+    color: var(--button-ink);
+
+    /*
+     * A tiny deformation prevents the foreground from looking too digitally
+     * aligned.
+     */
+    transform: rotate(-0.45deg) skewX(-1deg);
+    transform-origin: 50% 70%;
+}
+
+.shadow {
+    position: relative;
+    z-index: 1;
+
+    color: var(--button-shadow);
+
+    transform: translate(var(--shadow-x), var(--shadow-y)) rotate(0.7deg)
+        skewX(1.5deg);
+
+    transform-origin: 50% 70%;
+}
+
+/*
+ * A few small black echoes soften the clean digital text boundary and make
+ * the foreground feel more heavily inked.
+ */
+.foreground {
+    text-shadow:
+        0.012em 0 var(--button-ink),
+        -0.009em 0.012em var(--button-ink),
+        0.008em -0.008em var(--button-ink);
+}
+
+.underline {
+    position: relative;
+    z-index: 0;
+
+    display: block;
+    width: 104%;
+    height: 0.22em;
+
+    margin-top: 0.13em;
+    margin-left: -2%;
+
+    transform: rotate(-0.7deg);
+    transform-origin: left center;
+}
+
+/*
+ * Main handwritten stroke.
+ */
+.underline::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 16%;
+
+    height: 0.045em;
+    min-height: 2px;
+
+    background: var(--button-ink);
+
+    clip-path: polygon(
+        0% 34%,
+        4% 16%,
+        13% 29%,
+        22% 12%,
+        34% 26%,
+        47% 18%,
+        59% 32%,
+        70% 16%,
+        83% 28%,
+        94% 15%,
+        100% 35%,
+        100% 74%,
+        92% 61%,
+        79% 79%,
+        66% 64%,
+        52% 76%,
+        38% 61%,
+        25% 78%,
+        11% 63%,
+        0% 77%
+    );
+
+    transform: rotate(-0.15deg) skewX(-3deg);
+}
+
+/*
+ * Lighter second pass underneath, as though the line was drawn twice.
+ */
+.underline::after {
+    content: "";
+
+    position: absolute;
+    left: 1.5%;
+    right: -0.5%;
+    top: 52%;
+
+    height: 0.025em;
+    min-height: 1px;
+
+    background: color-mix(in srgb, var(--button-ink) 82%, transparent);
+
+    clip-path: polygon(
+        0% 25%,
+        10% 40%,
+        23% 24%,
+        36% 43%,
+        50% 29%,
+        64% 46%,
+        78% 27%,
+        91% 42%,
+        100% 28%,
+        100% 74%,
+        87% 61%,
+        73% 78%,
+        58% 63%,
+        43% 77%,
+        27% 60%,
+        13% 76%,
+        0% 63%
+    );
+
+    transform: rotate(0.35deg) skewX(2deg);
+}
+
+/*
+ * Hover keeps the print misregistration but shifts it slightly, producing
+ * a restrained animated ink effect.
+ */
+.button:hover .shadow {
+    transform: translate(
+            calc(var(--shadow-x) + 2px),
+            calc(var(--shadow-y) - 1px)
+        )
+        rotate(1deg) skewX(2deg);
+}
+
+.button:hover .foreground {
+    transform: rotate(-0.8deg) skewX(-1.5deg);
+}
+
+.button:hover .underline::before {
+    transform: rotate(-0.45deg) skewX(-4deg) scaleX(1.015);
+}
+
+.button:active .label {
+    transform: translateY(2px);
+}
+
+.button:active .shadow {
+    transform: translate(
+            calc(var(--shadow-x) - 1px),
+            calc(var(--shadow-y) + 2px)
+        )
+        rotate(0.4deg);
+}
+
+.button:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 0.18em;
+}
+
+.button:disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+.button:disabled .shadow,
+.button:disabled .foreground,
+.button:disabled .underline::before {
+    transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .foreground,
+    .shadow,
+    .underline::before {
+        transition: transform 90ms steps(2, end);
+    }
+}

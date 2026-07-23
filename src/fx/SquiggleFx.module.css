@@ -1,0 +1,20 @@
+.filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.squiggle {
+    display: inline-block;
+    min-width: 0;
+    will-change: filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .squiggle {
+        filter: none !important;
+        will-change: auto;
+    }
+}

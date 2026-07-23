@@ -1,0 +1,5 @@
+.roughBox {
+  background: var(--color-parchment-light);
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}

@@ -1,0 +1,160 @@
+{
+  "id": "entry_hall_event_cold_hearth_02",
+  "class": "Event",
+  "subtype": "Rest",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Chairs by the Dead Fire",
+  "description": "Two wingback chairs face a hearth that has not held fire in a long time. The ash is pale and undisturbed. Someone has arranged the chairs with care — angled just so, close enough that two people sitting in them might have spoken quietly without being heard. The room beyond is still. Nothing moves. Nothing watches, as far as you can tell.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "beats": [
+    {
+      "id": "dead_fire",
+      "description": "Two wingback chairs face the hearth. The ash is pale and undisturbed.",
+      "choices": [
+        {
+          "label": "Sit and let yourself rest",
+          "description": "Settle into one of the chairs and allow the stillness to do its work.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 5
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The chair holds you firmly. The cold does not bother you as much as it should, and for a short while your thoughts stop their circling.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": 1
+                },
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                },
+                {
+                  "resource": "Determination",
+                  "delta": 2
+                }
+              ]
+            },
+            "failure": {
+              "narrative": "You take a seat and close your eyes for a minute. Even if you are tired, your senses tickle - there is something wrong here. The other chair seems to be watching you, and the cold is sharper than it should be.",
+              "effects": [],
+              "next_beat": "uneasy_chair"
+            }
+          },
+          "id": "sit_and_let_yourself_rest"
+        },
+        {
+          "label": "Keep moving",
+          "description": "You do not trust stillness in this place.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You leave the chairs as you found them, angled toward the dead fire.",
+              "effects": []
+            }
+          },
+          "id": "keep_moving"
+        },
+        {
+          "label": "Fragment journal insight",
+          "description": "Take from your backpack the fragment you tore from the burned journal.",
+          "requires_item": "fragment_journal",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The journal was describing this place.",
+              "effects": [],
+              "next_beat": "discovery"
+            }
+          },
+          "id": "fragment_journal_insight"
+        }
+      ]
+    },
+    {
+      "id": "uneasy_chair",
+      "description": "You squint, looking for signs of movement in the room. You feel as if the space around you is expecting someone else to be on the other chair. As you decide to stand up and move out of the way, a chill runs down your spine.",
+      "choices": [
+        {
+          "label": "Move out of the way",
+          "description": "Trust the uneasiness in your bones and move before the room can settle around you.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You move out of the way quickly, with a sense of uneasiness permeating your bones.",
+              "effects": []
+            },
+            "failure": {
+              "narrative": "Your experience serves you well - something is coming. You draw your weapon thanking whatever luck you have that you are not sitting still when it arrives.",
+              "effects": [
+                {
+                  "resource": "Determination",
+                  "delta": 1
+                }
+              ],
+              "force_next_draw": {
+                "id": "entry_hall_combat_closing_presence_07"
+              }
+            }
+          },
+          "id": "move_out_of_the_way"
+        }
+      ]
+    },
+    {
+      "id": "discovery",
+      "description": "The journal fragment mentions a room that matches the one you are in, describing the chairs and the hearth. The last line is a note to self: 'The stillness here is different. It is not empty.'",
+      "choices": [
+        {
+          "label": "Contemplate the discovery",
+          "description": "The knowledge that you are not alone in this room is unsettling, but it may be worth something.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 5
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You consider the implications of the journal's description. The stillness here is indeed different, and you feel a strange connection to it.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ]
+            },
+            "failure": {
+              "narrative": "The realization that you are not alone in this room overwhelms you. You feel a wave of panic and quickly leave the area.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ]
+            }
+          },
+          "id": "contemplate_the_discovery"
+        }
+      ]
+    }
+  ],
+  "visual": {
+    "image": "images/entry_hall_event_cold_hearth_02.png",
+    "alt_text": "Two high-backed chairs angled toward a cold stone hearth, pale ash undisturbed beneath the grate. The room dim and still around them."
+  }
+}

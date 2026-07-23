@@ -1,0 +1,96 @@
+{
+  "id": "entry_hall_event_discovery_04",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Portrait Facing the Wall",
+  "description": "Every portrait in the entry hall faces outward — except one. This one has been turned to face the wall, its hanging wire still taut, the reversal deliberate. The back of the canvas is unmarked except for a single handprint pressed in something dark and long dried. It looks like ink, but you cannot be sure. You wonder the reason why this specific painting was reversed, as well as the author of the handprint.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Turn the portrait to face you",
+      "description": "",
+      "resource_tests": [
+        {
+          "resource": "Mind",
+          "dc": 5
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "The face in the painting has ordinary traits — forgettable, even — but its eyes have been scratched out carefully with something sharp, making the face void of life and expression, making it impossible to recognize. There is nothing on the painted side giving you hints as to why the painting should have been marked, leaving you with a sense of uneasiness and discomfort.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -1
+            },
+            {
+              "discover_lore": "entry_hall_event_discovery_04"
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "You turn it, and you can't but let out a scream; the painted face eyes have been carved out, and for a moment the visage looks like your own, and then it is not, and you cannot be certain which state is true.\nThe Grafting gets disturbed, and you just want to quickly erase these memories, pushing your vessel to press on.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -3
+            }
+          ]
+        }
+      },
+      "id": "turn_the_portrait_to_face_you"
+    },
+    {
+      "label": "Examine the handprint without turning the portrait",
+      "description": "",
+      "resource_tests": [],
+      "outcomes": {
+        "success": {
+          "narrative": "The handprint is pretty large: you'd say too large for a human, but the shape is human indeed. palm, phalanges, everything is compatible with what you'd read in an anatomy book. Given the substance is likely dried ink, it could have been painted, but at the same time, the level of detail is insane, making you drop the hypothesis immediately. You wonder if you'll stumble into someone affected by gigantism into the manor. Chuckling nervously at the idea, you prefer to get going.",
+          "effects": []
+        }
+      },
+      "id": "examine_the_handprint_without_turning_the_portrait"
+    },
+    {
+      "label": "Search the wall and floor beneath the portrait",
+      "description": "",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You look for what may have fallen or been left when the portrait was turned. Wedged in a gap between the baseboard and the stone floor, you find a small key, cold and heavy. You add it to your key ring and get going, excited by your discovery.\n*You feel the vessel lust for riches and loot. Whatever happens, you are certain they will not hand this key over when - and if - they return*.",
+          "effects": [
+            {
+              "resource": "Determination",
+              "delta": 1
+            },
+            {
+              "item_grant": "iron_key"
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "You find nothing, and in crouching too close to the wall you knock the portrait loose while getting up; it strikes the floor face-down, and the noise reverberates across the silent halls. You decide to get out of the way, as the noise could easily attract anyone - or anything - lurking these halls.",
+          "effects": []
+        }
+      },
+      "id": "search_the_wall_and_floor_beneath_the_portrait"
+    }
+  ],
+  "visual": {
+    "image": "images/entry_hall_event_discovery_04.png",
+    "alt_text": "A large gilt-framed portrait hanging reversed against a stone wall, its canvas back exposed. A dark handprint marks the center of the pale linen."
+  }
+}

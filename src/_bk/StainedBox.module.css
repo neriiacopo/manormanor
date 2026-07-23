@@ -1,0 +1,86 @@
+.root {
+    --paper-color: #f1ecdf;
+    --paper-highlight: #faf6ed;
+    --paper-shadow: #ddd2be;
+
+    --edge-color: 102 70 35;
+    --edge-intensity: 1;
+
+    --paper-radius: 0;
+    --stain-intensity: 1;
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    color: #3d352a;
+    border-radius: var(--paper-radius);
+}
+
+.filterDefinitions {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.paper,
+.edges {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.paper {
+    z-index: 0;
+
+    background: linear-gradient(
+        115deg,
+        var(--paper-shadow) 0%,
+        var(--paper-color) 22%,
+        var(--paper-highlight) 48%,
+        var(--paper-color) 76%,
+        #e7dece 100%
+    );
+
+    filter: var(--paper-filter);
+}
+
+/*
+ * The edges remain CSS-based because they follow the box geometry rather
+ * than forming random stains. They can also be moved into the SVG filter,
+ * but CSS inset shadows produce more predictable borders.
+ */
+.edges {
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgb(var(--edge-color) / calc(0.08 * var(--edge-intensity))),
+            transparent 7%,
+            transparent 93%,
+            rgb(var(--edge-color) / calc(0.08 * var(--edge-intensity)))
+        ),
+        linear-gradient(
+            180deg,
+            rgb(var(--edge-color) / calc(0.07 * var(--edge-intensity))),
+            transparent 9%,
+            transparent 89%,
+            rgb(var(--edge-color) / calc(0.1 * var(--edge-intensity)))
+        );
+
+    box-shadow:
+        inset 0 0 16px
+            rgb(var(--edge-color) / calc(0.07 * var(--edge-intensity))),
+        inset 0 0 90px
+            rgb(var(--edge-color) / calc(0.14 * var(--edge-intensity)));
+
+    mix-blend-mode: multiply;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}

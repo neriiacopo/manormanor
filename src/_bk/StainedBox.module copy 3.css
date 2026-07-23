@@ -1,0 +1,150 @@
+.root {
+    --paper-color: #f1ecdf;
+    --paper-highlight: #faf6ed;
+    --paper-shadow: #ddd2be;
+
+    --edge-color: 102 70 35;
+    --edge-intensity: 1;
+
+    --paper-radius: 0;
+    --paper-bleed: 12px;
+
+    position: relative;
+    isolation: isolate;
+
+    /*
+     * Do not use overflow: hidden here.
+     * The filter needs room to displace the paper beyond its original box.
+     */
+    overflow: visible;
+
+    color: #3d352a;
+}
+
+.filterDefinitions {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.surface,
+.edges {
+    position: absolute;
+
+    /*
+     * Extra material prevents transparent gaps when the SVG filter displaces
+     * pixels outward.
+     */
+    inset: calc(-1 * var(--paper-bleed));
+
+    pointer-events: none;
+}
+
+.surface {
+    z-index: 0;
+
+    background: linear-gradient(
+        115deg,
+        var(--paper-shadow) 0%,
+        var(--paper-color) 22%,
+        var(--paper-highlight) 48%,
+        var(--paper-color) 76%,
+        #e7dece 100%
+    );
+
+    filter: var(--paper-filter);
+    will-change: filter;
+}
+
+.edges {
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgb(var(--edge-color) / calc(0.12 * var(--edge-intensity))),
+            transparent 8%,
+            transparent 92%,
+            rgb(var(--edge-color) / calc(0.12 * var(--edge-intensity)))
+        ),
+        linear-gradient(
+            180deg,
+            rgb(var(--edge-color) / calc(0.1 * var(--edge-intensity))),
+            transparent 9%,
+            transparent 88%,
+            rgb(var(--edge-color) / calc(0.14 * var(--edge-intensity)))
+        );
+
+    box-shadow:
+        inset 0 0 16px
+            rgb(var(--edge-color) / calc(0.08 * var(--edge-intensity))),
+        inset 0 0 80px
+            rgb(var(--edge-color) / calc(0.15 * var(--edge-intensity)));
+
+    mix-blend-mode: multiply;
+}
+
+/*
+ * This is an actual alpha mask:
+ *
+ * - The first layer is the complete paper rectangle.
+ * - The radial layers are subtracted from it.
+ * - Both the paper and its edge shading use the same mask.
+ */
+.ruinedMask {
+    mask-image:
+        linear-gradient(#000 0 0),
+        radial-gradient(
+            ellipse 34px 22px at 0% 18%,
+            #000 96%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 47px 27px at 100% 68%,
+            #000 96%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 38px 24px at 72% 100%,
+            #000 96%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 25px 38px at 0% 82%, #000 96%, transparent 100%);
+
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-composite: exclude, exclude, exclude, exclude;
+
+    /*
+     * Chromium and Safari implementation.
+     */
+    -webkit-mask-image:
+        linear-gradient(#000 0 0),
+        radial-gradient(
+            ellipse 34px 22px at 0% 18%,
+            #000 96%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 47px 27px at 100% 68%,
+            #000 96%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse 38px 24px at 72% 100%,
+            #000 96%,
+            transparent 100%
+        ),
+        radial-gradient(ellipse 25px 38px at 0% 82%, #000 96%, transparent 100%);
+
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-composite: xor, xor, xor, xor;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}

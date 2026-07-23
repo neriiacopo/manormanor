@@ -1,0 +1,29 @@
+{
+  "id": "entry_hall_transition_crossroads_01",
+  "class": "Transition",
+  "subtype": "Gate",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Crossroads",
+  "description": "Beyond the ruined threshold, the hall opens again into a two-way crossroads. On one end of the room, there are stairs going down, the smell of humidity and wet stone tickling your nose. On the other side, a passage opens up going into the gardens, from where the air gives a refreshing smell of flowers and earth. You are inclined to go into the gardens, but usually leylines are nested deep into the earth; according to the Order knowledge, it would be easier to find clues on the source of power going staying near to the earth, but in reality this place is far from everything you have seen till now. Exploring the Gardens could be a good way to gather more intelligence and possibly loot to increase the survival chances of your Vessel. You can orient their minds towards what you see most appropriate.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "draw_mode": "forced_only",
+  "force_next_draw": null,
+  "destinations": [
+    {
+      "label": "Follow the steps of the stairs going down.",
+      "target_biome": "dungeon"
+    },
+    {
+      "label": "Cross into the Gardens into the light and the open air.",
+      "target_biome": "gardens"
+    }
+  ],
+  "visual": {
+    "alt_text": "An open passage with stairs descending on the left and an open doorway leading into the gardens on the right."
+  }
+}

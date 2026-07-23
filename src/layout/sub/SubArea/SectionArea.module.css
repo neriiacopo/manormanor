@@ -1,0 +1,8 @@
+.sectionArea {
+    flex: 0 0 auto;
+    width: 100%;
+    /* height: var(--section-area-height); */
+    height: auto;
+    overflow-y: auto;
+    background: var(--color-parchment-light);
+}

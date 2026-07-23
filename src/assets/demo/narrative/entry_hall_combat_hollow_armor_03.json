@@ -1,0 +1,109 @@
+{
+  "id": "entry_hall_combat_hollow_armor_03",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall",
+    "keep"
+  ],
+  "title": "The Suit Still Stands",
+  "description": "A suit of plate armor stands at the foot of the staircase, gauntleted hands resting on the pommel of a greatsword. It has stood there long enough that rust has bloomed across the pauldrons and crawled down into the joints. Then the visor turns toward you. There is nothing inside it - no eye, no light, no suggestion of a face - and yet the head has moved. The gauntlets tighten on the sword.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "The suit falls apart with a final, shuddering clang. The greatsword clatters to the floor, and the pieces of armor lie still.",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "uncommon"
+          }
+        },
+        {
+          "currency_grant": {
+            "currency": "gold",
+            "min": 2,
+            "max": 7
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Hollow Suit",
+    "threat_type": "Physical",
+    "health": 7,
+    "damage_pool": "1d4+1",
+    "effects": [
+      {
+        "type": "reduce_flat",
+        "value": 1
+      }
+    ],
+    "standard_attack": {
+      "telegraph": "The greatsword rises in a long, deliberate arc, the rust-eaten edge now no more than a blunt blade.",
+      "attack_label": "Damage Pool: 1d4+1 | Targets: Body",
+      "effects": [
+        {
+          "type": "reduce_flat",
+          "value": 1
+        }
+      ]
+    },
+    "special_attacks": [
+      {
+        "display_name": "Guarded Lunge",
+        "trigger": {
+          "type": "round_number_gte",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The hollow suit steps forward and thrusts at you, using the hilt of the sword as guard. Whoever this was, they carry the memories of a trained fighter.",
+        "attack_label": "Damage Pool: 1d4+1 | Targets: Body",
+        "resource_target_override": "Physical",
+        "id": "the_hollow_suit_special_2",
+        "dice_pool_override": "1d4+1",
+        "effects": [
+          {
+            "type": "reduce_per_die",
+            "value": 1
+          }
+        ],
+        "priority": 0
+      },
+      {
+        "display_name": "Overhead Strike",
+        "trigger": {
+          "type": "tactical",
+          "params": {
+            "check": "player_defended_last_round"
+          }
+        },
+        "telegraph": "The hollow suit raises the greatsword - It is trying to end the fight. The next blow is going to be tough, but you see plenty of openings.",
+        "attack_label": "Damage Pool: 1d10+2 | Targets: Body",
+        "id": "the_hollow_suit_special_1",
+        "dice_pool_override": "1d10+2",
+        "resource_target_override": "Physical",
+        "effects": [
+          {
+            "type": "take_per_die",
+            "value": 2
+          }
+        ],
+        "priority": 0
+      }
+    ]
+  },
+  "pre_combat_narrative": "It moves without sound. The armor does not creak. The joints do not grind. It simply moves.",
+  "visual": {
+    "alt_text": "A rusted suit of plate armor at the base of a stone staircase, greatsword raised, visor dark and empty."
+  }
+}

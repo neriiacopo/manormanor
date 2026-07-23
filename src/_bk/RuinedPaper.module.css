@@ -1,0 +1,59 @@
+/* RuinedPaper.module.css */
+
+.paper {
+    position: relative;
+    isolation: isolate;
+
+    width: min(78vw, 900px);
+    min-height: 120vh;
+    margin-inline: auto;
+    /* padding: clamp(4rem, 8vw, 8rem) clamp(2rem, 7vw, 7rem); */
+
+    box-sizing: border-box;
+}
+
+.surface {
+    position: absolute;
+    /* z-index: 0; */
+    inset: 24px;
+    background-color: blue;
+    overflow: hidden;
+
+    /* background:
+        radial-gradient(
+            circle at 20% 18%,
+            rgb(120 70 20 / 12%),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 82% 74%,
+            rgb(100 55 15 / 10%),
+            transparent 24%
+        ),
+        linear-gradient(
+            90deg,
+            rgb(90 45 10 / 12%),
+            transparent 12%,
+            transparent 88%,
+            rgb(90 45 10 / 12%)
+        ),
+        #d9bf82; */
+
+    box-shadow:
+        inset 0 0 60px rgb(85 40 10 / 24%),
+        0 20px 60px rgb(0 0 0 / 20%);
+
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}

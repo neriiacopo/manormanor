@@ -1,0 +1,137 @@
+{
+  "id": "entry_hall_event_oppressive_stillness_05",
+  "class": "Event",
+  "subtype": "Hazard",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Air That Does Not Move",
+  "description": "You open what looks like a regular door and you find yourself in an immense hall, likely a focal point of the Manor. What used to be a place of aggregation and, is now utterly still — not the stillness of an empty place, but the stillness of something holding its breath. The dust motes in the lamplight hang motionless, as though the air itself has thickened. You feel uncomfortable, and your own heartbeat sounds unreasonably loud.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "visual": {
+    "alt_text": "A wide stone entry hall in lamplight, dust hanging frozen mid-air, a lone figure stopped in the center, the shadows beyond utterly undisturbed."
+  },
+  "beats": [
+    {
+      "id": "start",
+      "description": "The stone hall opens up in multiple directions, the open space in stark contrast with the oppressive stillness that permeates the area. You can venture forth, going under the great stone arc, hike up the stairs on your right, or take some time to get acquainted to the darkness.",
+      "choices": [
+        {
+          "label": "Get acquainted with the darkness",
+          "description": "You squint your eyes trying to get acquainted with the darkness of the place - your eyes though naturally look for the light. ",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The pressure lifts, slowly, like a hand withdrawing from the back of your neck.",
+              "effects": [],
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "The stillness presses in until you cannot remember which direction you came from.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ],
+              "next_beat": "beat_2"
+            }
+          },
+          "id": "get_acquainted_with_the_darkness"
+        },
+        {
+          "label": "Move deliberately — force yourself forward",
+          "description": "Act as though nothing is wrong and walk through it.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 5
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "Your footsteps sound wrong in the silence, but the silence recedes as you advance.",
+              "effects": []
+            },
+            "failure": {
+              "narrative": "Three steps in, you freeze — and the stillness settles around you like water closing over a stone.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ]
+            }
+          },
+          "id": "move_deliberately_force_yourself_forward"
+        },
+        {
+          "label": "Make noise — speak, knock, scrape stone",
+          "description": "Break the stillness deliberately, whatever the cost.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 8
+            },
+            {
+              "resource": "Body",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The sound tears the moment open and you lurch forward, gasping, back into ordinary darkness.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ]
+            },
+            "failure": {
+              "narrative": "Your voice comes out wrong — thin, as though heard from a great distance — and the stillness does not break so much as absorb it.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                },
+                {
+                  "resource": "Body",
+                  "delta": -1
+                }
+              ]
+            }
+          },
+          "id": "make_noise_speak_knock_scrape_stone"
+        }
+      ]
+    },
+    {
+      "id": "beat_2",
+      "description": "fuuuuuuuuuuuuuuck",
+      "choices": [
+        {
+          "id": "new_choice",
+          "label": "newchoice",
+          "description": "Fuuuuuuuuuuuuuuck",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "",
+              "effects": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

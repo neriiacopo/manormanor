@@ -1,0 +1,71 @@
+{
+  "id": "entry_hall_event_alcove_behind_tapestry_01",
+  "class": "Event",
+  "subtype": "Rest",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Alcove Behind the Tapestry",
+  "description": "You press past the edge of a heavy tapestry — its woven figures worn to near-nothing by years and damp — and find a shallow alcove behind it, barely wide enough for a person. A stone bench runs along the back wall, and the air here is still in a way the rest of the manor is not. No sound reaches you. The tapestry falls back into place, and the hall beyond disappears.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Sit and rest a while",
+      "description": "Settle onto the bench and let the stillness do its work.",
+      "resource_tests": [],
+      "outcomes": {
+        "success": {
+          "narrative": "You sit in the dark until your breathing slows and the ache behind your eyes loosens, just enough.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": 2
+            },
+            {
+              "resource": "Stamina",
+              "delta": 3
+            }
+          ]
+        }
+      },
+      "id": "sit_and_rest_a_while"
+    },
+    {
+      "label": "Rest briefly, then press on",
+      "description": "A moment off your feet, no more — you do not trust the quiet.",
+      "resource_tests": [],
+      "outcomes": {
+        "success": {
+          "narrative": "The brief pause is enough to ease the tightness in your legs, even if the stillness here unsettles you as much as it helps.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": 1
+            }
+          ]
+        }
+      },
+      "id": "rest_briefly_then_press_on"
+    },
+    {
+      "label": "Leave immediately",
+      "description": "Something about a hiding place inside the manor does not sit right.",
+      "resource_tests": [],
+      "outcomes": {
+        "success": {
+          "narrative": "You step back through the tapestry into the hall, no worse than before.",
+          "effects": []
+        }
+      },
+      "id": "leave_immediately"
+    }
+  ],
+  "visual": {
+    "image": "images/entry_hall_event_alcove_behind_tapestry_01.png",
+    "alt_text": "A narrow stone alcove hidden behind a faded tapestry, a low bench against the back wall, the space barely lit and entirely still."
+  }
+}

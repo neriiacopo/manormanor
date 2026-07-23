@@ -1,0 +1,29 @@
+{
+  "id": "entry_hall_transition_shortcut_to_gardens_01",
+  "class": "Transition",
+  "subtype": "Shortcut",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Root Cellar Hatch",
+  "description": "You haul yourself up through the hatch and the manor falls away below you. There is no yard here, no wall, no honest sky — only a garden gone to ruin, its hedges black and overgrown and pressing close around the mouth of the cellar. Wet soil gives under your hands and the smell of green rot is everywhere. The way back down is open behind you, a square of cellar dark you could still drop into. Ahead, the tangled paths of the gardens wait, and nothing you passed to get here asked whether you had earned them.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "draw_mode": "forced_only",
+  "force_next_draw": null,
+  "destinations": [
+    {
+      "label": "Climb clear of the hatch and into the overgrown gardens.",
+      "target_biome": "gardens"
+    },
+    {
+      "label": "Drop back down into the cellar and keep to the manor.",
+      "stay": true
+    }
+  ],
+  "visual": {
+    "alt_text": "A cellar hatch opening upward into black overgrown garden hedges and wet soil, the square of cellar dark still visible below."
+  }
+}

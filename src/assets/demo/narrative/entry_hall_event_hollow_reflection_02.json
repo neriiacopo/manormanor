@@ -1,0 +1,145 @@
+{
+  "id": "entry_hall_event_hollow_reflection_02",
+  "class": "Event",
+  "subtype": "Hazard",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Water on the Floor",
+  "description": "Water has pooled across the flagstones here — not much, but perfectly still, dark as ink in the low light. You see yourself in it before you register the surface. The reflection is wrong. Not the angle. Not the light. Something in it moves before you do, or fails to stop when you do, and you cannot tell which.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "beats": [
+    {
+      "id": "encounter",
+      "description": "The water lies still. You have not moved yet.",
+      "choices": [
+        {
+          "label": "Step over it without looking down",
+          "description": "Cross in one deliberate stride, eyes on the far door.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You are across before the reflection can do whatever it was doing.",
+              "effects": []
+            },
+            "failure": {
+              "narrative": "Your foot disturbs the surface and for a moment the image fractures into something that is not you at all.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ]
+            }
+          },
+          "id": "step_over_it_without_looking_down"
+        },
+        {
+          "label": "Crouch and look at what the water shows",
+          "description": "Get low and study the reflection carefully before moving.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 8
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The reflection shows the ceiling above you as it was before something was broken up there. You note the shape of the damage.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ],
+              "next_beat": "studied"
+            },
+            "failure": {
+              "narrative": "The longer you look, the more certain you become that the figure in the water is watching you from below, from a room that does not match this one.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -3
+                }
+              ]
+            }
+          },
+          "id": "crouch_and_look_at_what_the_water_shows"
+        },
+        {
+          "label": "Scuff the surface with your boot",
+          "description": "Break the reflection deliberately before it can settle.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 4
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The water ripples and the image goes. You cross without incident.",
+              "effects": []
+            },
+            "failure": {
+              "narrative": "You drag your foot through the surface and feel, briefly, as though something pulled back.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ]
+            }
+          },
+          "id": "scuff_the_surface_with_your_boot"
+        }
+      ]
+    },
+    {
+      "id": "studied",
+      "description": "You saw damage in the reflected ceiling that is not visible from below. The information sits with you.",
+      "choices": [
+        {
+          "label": "Commit what you saw to memory",
+          "description": "Fix the reflected image in your mind before it fades.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The bearing settles like a compass needle finding north. You know something about this place that the place did not mean to show you.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ]
+            }
+          },
+          "id": "commit_what_you_saw_to_memory"
+        },
+        {
+          "label": "Let it go — some things are not worth carrying",
+          "description": "Step back from the water and walk on.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The cold fades by the next corridor.",
+              "effects": []
+            }
+          },
+          "id": "let_it_go_some_things_are_not_worth_carrying"
+        }
+      ]
+    }
+  ],
+  "visual": {
+    "alt_text": "A flagstone floor with a thin dark pool of still water stretching across it, a distorted reflection visible within. The image in the water does not quite match the room above."
+  }
+}

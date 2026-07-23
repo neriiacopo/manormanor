@@ -1,0 +1,13 @@
+.container {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    overflow: hidden;
+}
+
+.draggable {
+    position: absolute;
+    inset: 0;
+    touch-action: none; /* let the drag gesture own touch input here, not page scroll */
+    will-change: transform;
+}

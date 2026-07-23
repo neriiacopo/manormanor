@@ -1,0 +1,13 @@
+/* Floats above MainArea rather than sharing GameView's flex-grow split, so
+   it never resizes or displaces MainArea — it's a `position: absolute`
+   overlay anchored to the bottom of the (relatively-positioned) GameView,
+   sized only to its own content (SectionArea + ToggleBar). */
+.subArea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}

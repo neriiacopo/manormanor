@@ -1,0 +1,112 @@
+{
+  "id": "entry_hall_event_doorway_thing_05",
+  "class": "Event",
+  "subtype": "Trap",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Shape in the Doorway",
+  "description": "You reach the far end of the hall. The door ahead is open — has been open, you think, for a very long time. Something fills the lower half of the frame. It takes a moment to understand what you are seeing: a figure, collapsed face-down across the threshold, limbs at angles that suggest it did not fall so much as stop. The door cannot close around it. Neither can you pass without stepping over.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Step over quickly and move on",
+      "description": "Cross the threshold in one motion, eyes forward.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "Your foot clears it cleanly and you are through before you can think too carefully about what your boot grazed.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "Your foot catches on something — an arm, a wrist — and the floor comes up hard to meet your hands.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "step_over_quickly_and_move_on"
+    },
+    {
+      "label": "Crouch and examine it before crossing",
+      "description": "Get low. Look at what is actually there before you commit.",
+      "resource_tests": [
+        {
+          "resource": "Mind",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "You see enough to know it will not move, and you step over it with steady hands.",
+          "effects": []
+        },
+        "failure": {
+          "narrative": "Crouching brings your face too close; the detail is wrong in ways you cannot name and cannot unsee.",
+          "effects": [
+            {
+              "resource": "Mind",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "crouch_and_examine_it_before_crossing"
+    },
+    {
+      "label": "Drag it clear of the doorway first",
+      "description": "Move it aside before you cross — you will not leave your back exposed to something you stepped over.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 7
+        },
+        {
+          "resource": "Mind",
+          "dc": 7
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "It moves. It is heavier than it should be and lighter than you feared, and you do not let yourself think about the difference.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -1
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "Halfway through, your grip fails — or something resists — and the shape tilts toward you; you wrench away and stumble through regardless, shaking.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -1
+            },
+            {
+              "resource": "Mind",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "drag_it_clear_of_the_doorway_first"
+    }
+  ],
+  "visual": {
+    "image": "images/entry_hall_event_doorway_thing_05.png",
+    "alt_text": "A dim doorway at the end of a stone corridor, its door hanging open on rusted hinges. A figure lies collapsed across the threshold, face down, limbs splayed at wrong angles."
+  }
+}

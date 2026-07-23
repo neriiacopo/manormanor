@@ -1,0 +1,336 @@
+{
+  "id": "entry_hall_event_three_locks_07",
+  "class": "Event",
+  "subtype": "Choice",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Corridor of Three Locks",
+  "description": "A narrow passage branches from the main hall, sealed at intervals by three iron doors, each fitted with a different lock. The first door stands closest — its keyhole surrounded by faint scratches, as though something has worked at it from the other side. Dust lies undisturbed on the floor ahead, yet the air moving through the gap beneath the door is warm. You study the corridor and the locks, weighing what patience and force and risk each might demand.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "visual": {
+    "image": "images/entry_hall_event_three_locks_07.png",
+    "alt_text": "A narrow stone corridor receding into shadow, interrupted by three heavy iron doors, each bearing a different lock mechanism. Scratches mar the wood and plaster around the keyholes."
+  },
+  "beats": [
+    {
+      "id": "beat_1",
+      "description": "The first door is old iron, its lock a simple pin tumbler crusted with verdigris. The scratches around the keyhole are deep — something with hard fingers has tried this from both sides. You can study the mechanism, force it, or simply wait and listen before committing.",
+      "choices": [
+        {
+          "label": "Study the lock's markings before attempting it",
+          "description": "You crouch close and trace the scratch patterns, reading them the way a careful eye reads a wound.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 5
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The scratches tell you the direction the tumblers favor. You apply pressure gently and the lock gives without sound. The door swings inward on cold air.",
+              "effects": [],
+              "force_next_draw": null,
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "The patterns confuse more than they guide. You misread the tension and the mechanism seizes — you wrench it open by brute improvisation, scraping your knuckles raw.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_2"
+            }
+          },
+          "id": "study_the_lock_s_markings_before_attempting_it"
+        },
+        {
+          "label": "Force the door with your shoulder and weight",
+          "description": "No patience for this. You set your feet and drive hard against the door frame where the lock is seated.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 7
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The frame splinters at the strike plate. The door crashes open and you catch yourself on the other side, upright, breathing hard. The noise rolls down the corridor ahead and dies.",
+              "effects": [],
+              "force_next_draw": null,
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "The door does not yield. The impact jars through your shoulder and into your neck. You stagger back and must find another way — shaken, the joint aching deep.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -2
+                },
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_2"
+            }
+          },
+          "id": "force_the_door_with_your_shoulder_and_weight"
+        },
+        {
+          "label": "Use the iron key you carry",
+          "description": "The key in your possession is old iron. It may fit — or it may not. You try it in the lock.",
+          "requires_item": "iron_key",
+          "requires_registry": null,
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The key turns with a heaviness that suggests it was cast for this lock or one very close to it. The bolt draws back cleanly. You pocket the key and step through.",
+              "effects": [],
+              "force_next_draw": null,
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "The key enters but will not complete its turn. Close — close enough to feel the tumblers catching — but the fit is wrong. You withdraw it and press through by other means, forcing the lock until it breaks.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_2"
+            }
+          },
+          "id": "use_the_iron_key_you_carry"
+        }
+      ]
+    },
+    {
+      "id": "beat_2",
+      "description": "The inner passage is shorter than expected. The second door is different: its lock is a heavy warded mechanism, but beside it, scratched into the plaster at eye height, is a diagram — partial, water-damaged, but legible enough if you take a moment with it. The warmth from before is stronger here. Something in the walls is conducting it.",
+      "choices": [
+        {
+          "label": "Read the diagram carefully before touching the lock",
+          "description": "You flatten yourself against the wall and work through the diagram, tracing each line with a finger just above the surface.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 5
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The diagram is a bypass sequence — an old servant's trick for resetting the lock from the inside. Applied from the outside in reverse, it works. The door opens without resistance.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            },
+            "failure": {
+              "narrative": "Half the diagram is illegible. You guess at the sequence and trigger a secondary catch that bites into your fingers when the lock snaps back unexpectedly.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -1
+                },
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            }
+          },
+          "id": "read_the_diagram_carefully_before_touching_the_lock"
+        },
+        {
+          "label": "Attack the lock housing with brute force",
+          "description": "Diagrams and patience have limits. You set your heel against the lock housing and kick until something gives.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 8
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The housing shears away from the door with a sound like a gunshot in the narrow space. You stand in the silence that follows, breathing. The door hangs open.",
+              "effects": [],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            },
+            "failure": {
+              "narrative": "The housing holds. Your boot skids on the floor and you go down hard onto one knee. The lock watches you from the door, unchanged. You find the door opens inward if you simply push hard enough — but the fall cost you.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -2
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            }
+          },
+          "id": "attack_the_lock_housing_with_brute_force"
+        },
+        {
+          "label": "Push on the door itself, not the lock",
+          "description": "You ignore the lock and press your palms flat to the door, searching for give in the frame.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The door was never fully latched — the lock is cosmetic, or nearly so. It swings at your push, revealing the passage beyond. You have wasted nothing.",
+              "effects": [],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            },
+            "failure": {
+              "narrative": "The door is solidly fixed. Your hands find no purchase and the moment spent searching is a moment lost to the warmth pressing at your back, making it harder to think clearly.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null,
+              "next_beat": "beat_3"
+            }
+          },
+          "id": "push_on_the_door_itself_not_the_lock"
+        }
+      ]
+    },
+    {
+      "id": "beat_3",
+      "description": "The third door is at the far end. It is different from the others — older, the iron blackened in a way that heat causes, not oxidation. There is no conventional lock. Instead, a single iron bar rests in two brackets, held there by a chain wrapped through a ring on the wall. The chain is fastened with a padlock. The door itself is warm to the eye — you do not need to touch it to know. Whatever is on the other side has been contained, not kept out.",
+      "choices": [
+        {
+          "label": "Examine the chain and padlock for weakness",
+          "description": "You study where the chain meets the ring and where the padlock sits in its hasp, looking for the flaw.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The ring in the wall is the weak point — old mortar, not the iron itself. You work it loose and the chain drops without you ever touching the padlock. The bar lifts. The door opens onto a small stone alcove, empty save for a cloth-wrapped bundle resting on a shelf. Whatever was here is gone. The bundle remains.",
+              "effects": [
+                {
+                  "item_grant": "tattered_cloth"
+                }
+              ],
+              "force_next_draw": null
+            },
+            "failure": {
+              "narrative": "You misread which link was weakest and pull against solid iron until your hands shake. The chain holds. You are left staring at the door, the warmth pressing back through it, and something — not sound, not exactly — vibrates through your teeth. You retreat the way you came.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ],
+              "force_next_draw": null
+            }
+          },
+          "id": "examine_the_chain_and_padlock_for_weakness"
+        },
+        {
+          "label": "Strike the padlock repeatedly until it breaks",
+          "description": "You find a loose stone from the wall and beat at the padlock with single-minded force.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 8
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The hasp gives before the lock does — the metal fatigues and snaps on your fourth blow. The bar lifts. Beyond the door is only the alcove and the bundle and the smell of something burned away to nothing long before you arrived.",
+              "effects": [
+                {
+                  "item_grant": "tattered_cloth"
+                }
+              ],
+              "force_next_draw": null
+            },
+            "failure": {
+              "narrative": "The lock does not break. Your arm goes numb to the elbow from the repeated impacts. The stone crumbles before the iron does. You step back from the door and do not touch it again.",
+              "effects": [
+                {
+                  "resource": "Body",
+                  "delta": -2
+                },
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null
+            }
+          },
+          "id": "strike_the_padlock_repeatedly_until_it_breaks"
+        },
+        {
+          "label": "Leave the third door sealed and withdraw",
+          "description": "You have come far enough. The warmth at the door's surface and the purpose of its bar persuade you. You turn away.",
+          "requires_item": null,
+          "requires_registry": null,
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You walk back through the corridor, past both opened doors, into the hall beyond. The warmth does not follow. Whatever you have chosen not to release remains where it was left. The corridor behind you is still.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ],
+              "force_next_draw": null
+            },
+            "failure": {
+              "narrative": "You turn away and walk back. The decision costs you nothing material, yet the feeling of that door at your back — the warmth, the sealed-in purpose of it — stays in your chest longer than it should.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ],
+              "force_next_draw": null
+            }
+          },
+          "id": "leave_the_third_door_sealed_and_withdraw"
+        }
+      ]
+    }
+  ]
+}

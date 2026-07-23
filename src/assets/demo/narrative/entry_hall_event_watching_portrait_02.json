@@ -1,0 +1,136 @@
+{
+  "id": "entry_hall_event_watching_portrait_02",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Portrait Above the Stairs",
+  "description": "The painting hangs at the landing's turn, too large for the wall it occupies, the frame pressing against both corners as though it was installed before the house was built around it. The subject is a figure in dark clothing, standing before a window that does not match any window you have seen in this manor. You have moved past it twice now, and both times you felt the painted eyes adjust. Not drift. Adjust.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "visual": {
+    "alt_text": "A vast oil portrait in a dark frame dominating a staircase landing, the painted figure's eyes catching the lamplight. The canvas surface is old and slightly convex, as though something presses outward from behind."
+  },
+  "beats": [
+    {
+      "id": "start",
+      "description": "You consider your options.",
+      "choices": [
+        {
+          "label": "Stand still and look back at it",
+          "description": "Hold your ground and watch the portrait directly, long enough to be certain.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The eyes do not move while you are watching — but the hands, you now notice, are not positioned the same as when you first looked up.",
+              "effects": []
+            }
+          },
+          "id": "stand_still_and_look_back_at_it"
+        },
+        {
+          "label": "Study the window in the painting",
+          "description": "The background detail is wrong; press your lamp close and trace what lies beyond the painted glass.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The window in the painting looks out on a courtyard — and in that courtyard, rendered in brushstrokes no larger than a thumbnail, a door stands open that you have not yet found.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ]
+            },
+            "failure": {
+              "narrative": "The longer you look, the less the background resembles a painting — your lamp wavers and you step back, certain for a moment that something on the other side of the canvas was looking back.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ]
+            }
+          },
+          "id": "study_the_window_in_the_painting"
+        },
+        {
+          "label": "Pull the portrait from the wall",
+          "description": "Whatever is behind it matters more than whatever is on it.",
+          "resource_cost":   [
+            {
+              "resource": "Stamina",
+              "amount": 3
+            }
+          ],
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 8
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The frame is as heavy as its size suggest - you are thankful of the herculean show strength shown by your Vessel that somehow manages to lift it enough so that the enormous nails keeping it in place let it go free. The ",
+              "effects": [],
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "Despite the panting and hissing, your vessel is not capable of moving the enormous frame out of place - you might have been too demanding, or that thing is just meant to stay where it is.",
+              "effects": []
+            }
+          },
+          "id": "pull_the_portrait_from_the_wall"
+        }
+      ]
+    },
+    {
+      "id": "beat_2",
+      "description": "Once the frame is out of place, you see a small tunnel, sized for no more than one person, slipping into the dark.",
+      "choices": [
+        {
+          "id": "get_into_the_alcove",
+          "label": "Get into the alcove",
+          "description": "The darkness is unsettling but you take a deep breath, climb into the alcove and press on into the dark.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The innards of the manor are of cold stone, and the smell of humidity makes you wonder if the structure itself sits on top of a water table. You press on, full of curiosity.",
+              "effects": [],
+               "force_next_draw": {
+                "id": "entry_hall_event_tome_collection_discovery"
+              }
+            }
+          },
+          "resource_cost": [
+            {
+              "resource": "Determination",
+              "amount": 2
+            }
+          ]
+        },
+        {
+          "id": "leave_it_be_and_stay_in_the_manor_halls",
+          "label": "Leave it be and stay in the manor halls",
+          "description": "A hidden passage behing a painting is tempting, but you feel in your gut that nothing good can come out of it.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You prefer the integrity of your Vessel and postpone the alcove exploration.",
+              "effects": []
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

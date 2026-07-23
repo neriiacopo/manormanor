@@ -1,0 +1,16 @@
+.dieRow { display: flex; gap: 8px; }
+
+.die {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg); /* diamond shape, per reference art */
+  border: 2px solid var(--color-ink);
+}
+
+.die .face { transform: rotate(-45deg); font-family: var(--font-scribe); }
+
+.pending  { background: var(--color-ink); color: var(--color-parchment-light); }
+.resolved { background: transparent; color: var(--color-ink); }

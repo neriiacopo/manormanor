@@ -1,0 +1,198 @@
+{
+  "id": "entry_hall_event_laughing_room_03",
+  "class": "Event",
+  "subtype": "Hazard",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "Laughter from the Empty Room",
+  "description": "You stop. From behind a door to your left comes the sound of a child laughing — clear and bright, the kind that belongs to summer afternoons and open fields. The door is ajar. Through the gap you can see bare floorboards, a fallen chair, nothing else. The laughter continues, unhurried, as though it does not know you are there. It has the texture of a memory that was never yours.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "beats": [
+    {
+      "id": "encounter",
+      "description": "The laughter continues. The door is ajar. You have not yet committed to anything.",
+      "choices": [
+        {
+          "label": "Walk past and do not look",
+          "description": "Keep your eyes on the passage ahead and your feet moving.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You round the corner and the sound falls away, swallowed by the manor's usual silence.",
+              "effects": []
+            },
+            "failure": {
+              "narrative": "You almost manage it, but something in the pitch of the laughter hooks behind your eyes and will not let go.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ],
+              "next_beat": "followed"
+            }
+          },
+          "id": "walk_past_and_do_not_look"
+        },
+        {
+          "label": "Push the door open and look inside",
+          "description": "Step through and confront whatever is there.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 8
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The room is empty, as you knew it would be, and the silence that greets you is absolute — which is somehow worse than any sight could have been.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ],
+              "next_beat": "empty_room"
+            },
+            "failure": {
+              "narrative": "The laughter stops the instant you enter, and in the silence you understand with total certainty that it was standing directly behind the door.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -3
+                }
+              ],
+              "force_next_draw": {
+                "class": "Combat",
+                "scope": "current_biome"
+              }
+            }
+          },
+          "id": "push_the_door_open_and_look_inside"
+        },
+        {
+          "label": "Wait in the corridor and listen",
+          "description": "Hold still and let the sound run its course.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            },
+            {
+              "resource": "Body",
+              "dc": 4
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "After a long while the laughter trails off into nothing, and you find your breathing has steadied without your noticing.",
+              "effects": []
+            },
+            "failure": {
+              "narrative": "You stand rigid for what might be minutes or hours; when it finally stops, something in you has gone quiet alongside it.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ]
+            }
+          },
+          "id": "wait_in_the_corridor_and_listen"
+        }
+      ]
+    },
+    {
+      "id": "followed",
+      "description": "The corridor ahead seems unchanged. But your neck prickles. Something may have come with you when the laughter stopped.",
+      "choices": [
+        {
+          "label": "Keep walking — do not look back",
+          "description": "Whatever it is, giving it your attention will not help.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You put distance between yourself and the door. The prickling fades, slowly.",
+              "effects": []
+            }
+          },
+          "id": "keep_walking_do_not_look_back"
+        },
+        {
+          "label": "Turn and check the corridor",
+          "description": "Look once, clearly, and settle the question.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 5
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "Nothing is there. The corridor is empty. You feel the certainty of it and it helps.",
+              "effects": []
+            },
+            "failure": {
+              "narrative": "Nothing is there — but in the moment between looking and being sure, something was.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -1
+                }
+              ]
+            }
+          },
+          "id": "turn_and_check_the_corridor"
+        }
+      ]
+    },
+    {
+      "id": "empty_room",
+      "description": "The room is empty. The silence here is different from the silence of the manor — total, without echo. A fallen chair lies on its side near the far wall.",
+      "choices": [
+        {
+          "label": "Leave immediately",
+          "description": "You have seen what there is to see.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You step back into the corridor and pull the door to. The silence stays behind it.",
+              "effects": []
+            }
+          },
+          "id": "leave_immediately"
+        },
+        {
+          "label": "Right the fallen chair",
+          "description": "A small act. Something that belongs upright should be upright.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The chair stands. The room does not object. You feel, briefly, that you have done something the room needed.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ]
+            }
+          },
+          "id": "right_the_fallen_chair"
+        }
+      ]
+    }
+  ],
+  "visual": {
+    "alt_text": "A dim corridor with a door standing slightly ajar, pale light falling on bare floorboards beyond. The room inside is visibly, completely empty."
+  }
+}

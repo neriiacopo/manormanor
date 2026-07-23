@@ -1,0 +1,233 @@
+{
+  "id": "entry_hall_event_door_that_wasnt_05",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "A Door Not Remembered",
+  "description": "You have walked this stretch of the entry hall twice already, and you are certain of what you saw: stone wall, a mounted bracket, a water stain in the shape of a hand. The door is between the bracket and the stain now, flush with the wall as though it has always been there. The wood is old but the hinges show no rust. There is no handle, only a small hollow where one might have been.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "visual": {
+    "image": "images/entry_hall_event_door_that_wasnt_05.png",
+    "alt_text": "A narrow wooden door set flush into a stone wall, between a rusted wall bracket and a dark water stain. No handle, only a shallow hollow. The wood is dark and very old."
+  },
+  "beats": [
+    {
+      "id": "beat_1",
+      "description": "Up close the door gives back nothing — no light beneath it, no warmth, no cold. The wood is older than the hall around it, older than it has any right to be for a thing that was not here an hour ago. You could listen at it, you could read the grain, or you could put your hand where a handle is not.",
+      "choices": [
+        {
+          "id": "press_your_ear_to_the_wood_and_listen",
+          "label": "Press your ear to the wood and listen",
+          "description": "Hold still and attend to whatever is on the other side.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "Nothing. No draft, no creak, no settling — only the absolute silence of a space that has been sealed for a very long time. Whatever is behind the wood, it is not breathing, and it is not waiting for you to leave.",
+              "effects": [],
+              "next_beat": "beat_2"
+            }
+          }
+        },
+        {
+          "id": "study_the_door_s_frame_and_edges_closely",
+          "label": "Study the door's frame and edges closely",
+          "description": "Run your fingers along every seam before committing to anything.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 8
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The grain of the wood does not match itself — the left half and the right half were cut from two different trees, joined precisely at the center, as though the door were assembled here rather than carried in. Naming the trick steadies you; a made thing can be understood.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ],
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "You stare at the seams until the lines begin to shift, until you cannot be certain the door is a door and not a trick of shadow and exhaustion. When you finally look away, the wall itself seems to breathe.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ],
+              "next_beat": "beat_2"
+            }
+          }
+        },
+        {
+          "id": "fit_your_thumb_into_the_hollow_where_a_handle_should_be",
+          "label": "Fit your thumb into the hollow where a handle should be",
+          "description": "Set your thumb into the little depression and hold your nerve.",
+          "resource_tests": [
+            {
+              "resource": "Determination",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The hollow is dry and smooth and exactly the depth of a thumb — your thumb. It seats the way a key seats in its ward, as though the door were measured to your hand and no one else's. You withdraw it slowly and do not let the thought take root.",
+              "effects": [
+                {
+                  "resource": "Determination",
+                  "delta": 1
+                }
+              ],
+              "next_beat": "beat_2"
+            },
+            "failure": {
+              "narrative": "The hollow is colder than the stone around it, and when you pull your thumb free the cold stays behind in the joint — a small ache that is not yours, settling in to wait.",
+              "effects": [
+                {
+                  "resource": "Determination",
+                  "delta": -1
+                }
+              ],
+              "next_beat": "beat_2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "beat_2",
+      "description": "Whatever you have made of it, the door has not changed: no handle, no lock, only the hollow and the seam down its center. It waits the way a held breath waits. You can open it, or you can leave it to whatever it is.",
+      "choices": [
+        {
+          "id": "push_the_door_open",
+          "label": "Push the door open",
+          "description": "Place both hands flat against the wood and apply steady pressure.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The door swings inward without resistance, revealing a shallow alcove and a single unlit candle on a stone shelf — the wick still warm, as though someone snuffed it at the sound of your step.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ],
+              "next_beat": "beat_3"
+            },
+            "failure": {
+              "narrative": "The door opens onto solid wall — the same stone as the rest of the hall, unbroken and cold — and something in you cannot reconcile what it saw before with what it sees now. When you blink, the door is gone as well, and only the water stain remains, its hand-shape a little wider than you remember.",
+              "effects": [
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "brace_yourself_then_ease_the_door_open_slowly",
+          "label": "Brace yourself, then ease the door open slowly",
+          "description": "Spend the nerve to open it on your own terms, ready for anything.",
+          "resource_cost": [
+            {
+              "resource": "Determination",
+              "amount": 2
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You set your palms flat and open it a hair at a time, refusing to be startled by whatever waits behind it. The door gives onto a shallow alcove — a stone shelf, an unlit candle, the wick still faintly warm. Nothing lunges. You let out the breath you had been keeping.",
+              "effects": [],
+              "next_beat": "beat_3"
+            }
+          }
+        },
+        {
+          "id": "leave_the_door_as_you_found_it_and_walk_on",
+          "label": "Leave the door as you found it and walk on",
+          "description": "Some thresholds are not meant to be crossed.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You step back. The door makes no sound as you go, and when you glance over your shoulder from the far end of the hall, the wall between the bracket and the stain is only wall. You do not go back to learn which of them was lying.",
+              "effects": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "beat_3",
+      "description": "Beyond the door is not a room but a recess — a stone shelf at chest height, barely deep enough to kneel in. On the shelf sits the unlit candle, its wick still warm, and beside it a flat brass disc catching what little light you carry.",
+      "choices": [
+        {
+          "id": "take_the_brass_charm_and_go",
+          "label": "Take the brass charm and go",
+          "description": "Pocket what you can reach and leave the candle to its dark.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The disc is a charm — a flat brass token scored with worn protective marks, cool and heavier than it looks. You close your hand around it and step back into the hall, leaving the candle unlit behind you.",
+              "effects": [
+                {
+                  "item_grant": "etched_charm"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "pocket_the_charm_then_light_the_candle",
+          "label": "Pocket the charm, then light the candle to see the alcove whole",
+          "description": "Take the token, then bring light to the rest of the recess.",
+          "resource_tests": [
+            {
+              "resource": "Mind",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "You pocket the brass charm and touch a flame to the warm wick; it catches at once, too eager. In the new light the back of the alcove is scored with the same paired marks as the charm — a ward, or a warning, set facing inward. You understand it just enough to be glad you are leaving.",
+              "effects": [
+                {
+                  "item_grant": "etched_charm"
+                },
+                {
+                  "resource": "Mind",
+                  "delta": 1
+                }
+              ]
+            },
+            "failure": {
+              "narrative": "You pocket the brass charm and touch a flame to the warm wick. It catches too eagerly, and for an instant the candlelight throws your own shadow onto the back wall — but the shadow is turned the wrong way, facing you across the flame. Then it is only a shadow again. You leave quickly, and you do not look at the candle twice.",
+              "effects": [
+                {
+                  "item_grant": "etched_charm"
+                },
+                {
+                  "resource": "Mind",
+                  "delta": -2
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

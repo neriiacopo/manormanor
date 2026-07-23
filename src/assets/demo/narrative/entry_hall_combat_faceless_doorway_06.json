@@ -1,0 +1,84 @@
+{
+  "id": "entry_hall_combat_faceless_doorway_06",
+  "class": "Combat",
+  "subtype": "Standard",
+  "biomes": [
+    "entry_hall",
+    "grand_hall"
+  ],
+  "title": "Still in the Doorway",
+  "description": "It has been standing there since you entered the hall. You are certain of this, though you cannot account for why you only notice it now. It is shaped like a person - coat, hands, the suggestion of shoulders - but where a face should be there is only smooth, pale nothing. It does not move. It does not need to. You feel the pressure of its attention like a hand pressing against the inside of your skull.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "outcomes": {
+    "victory": {
+      "narrative": "",
+      "effects": [
+        {
+          "item_grant": {
+            "rarity": "common"
+          }
+        }
+      ]
+    },
+    "fleeing": {
+      "narrative": "",
+      "effects": []
+    }
+  },
+  "enemy": {
+    "name": "The Threshold Figure",
+    "threat_type": "Spectral",
+    "health": 6,
+    "damage_pool": "1d6+2",
+    "standard_attack": {
+      "telegraph": "The Threshold Figure turns its blank face toward you, and the silence in the room becomes absolute.",
+      "attack_label": "Damage Pool: 1d6+2 | Targets: Mind",
+      "effects": []
+    },
+    "special_attacks": [
+      {
+        "display_name": "Closing Distance",
+        "trigger": {
+          "type": "player_in_same_stance_for_n_rounds",
+          "params": {
+            "n": 2
+          }
+        },
+        "telegraph": "The Threshold Figure has not moved, and yet somehow it is closer - close enough that you can see your own reflection warped across the smooth absence where its face should be.",
+        "attack_label": "Damage Pool: 2d6 | Targets: Mind",
+        "id": "the_threshold_figure_special_1",
+        "dice_pool_override": "2d6",
+        "resource_target_override": "Spectral",
+        "effects": [],
+        "priority": 0
+      },
+      {
+        "display_name": "Borrowed Voice",
+        "trigger": {
+          "type": "state",
+          "params": {
+            "resource": "Mind",
+            "operator": "lte",
+            "value": 4
+          }
+        },
+        "telegraph": "The silence fractures. You hear your own name spoken in a voice you haven't heard since childhood, and it is coming from the place where its mouth should be.",
+        "attack_label": "Damage Pool: 1d6+2 | Targets: Body",
+        "resource_target_override": "Physical",
+        "id": "the_threshold_figure_special_2",
+        "dice_pool_override": "1d6+2",
+        "effects": [],
+        "priority": 0
+      }
+    ],
+    "effects": []
+  },
+  "pre_combat_narrative": "It takes one step forward. The floor does not creak beneath it.",
+  "visual": {
+    "alt_text": "A featureless human figure in a dark coat, standing motionless in a tall doorway at the far end of a shadowed hall. No face. Hands at its sides."
+  }
+}

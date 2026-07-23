@@ -1,0 +1,204 @@
+{
+  "id": "entry_hall_event_forgotten_cellar_01",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "The Forgotten Cellar",
+  "description": "The steps give onto a low cellar the entry hall above has long forgotten. The air is cold and close, thick with damp stone, soured wine, and something green and living underneath. Pale growth clots one corner in a soft, breathing mass. Along the far wall dusty racks sag under bottles no hand has touched in a lifetime, and beside them squats an enormous metal drum that catches your light wrongly. A thin draft leaks from a hatch set low in the opposite wall, carrying wet earth from somewhere outside.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "draw_mode": "forced_only",
+  "force_next_draw": null,
+  "beats": [
+    {
+      "id": "cellar_floor",
+      "description": "Your steps settle on packed earth. Three things pull at your attention: the pale growth clotting the near corner, the sagging wine racks and their squat metal neighbour, and the low hatch across the room where the draft gets in.",
+      "choices": [
+        {
+          "id": "pick_through_the_pale_growth",
+          "label": "Pick through the pale growth in the corner",
+          "description": "Cross to the soft mass clinging to the stone and see what it is.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You pick your way to the corner. Close up, the growth is a dense bed of pale caps, their gills shivering though there is no wind down here.",
+              "effects": [],
+              "next_beat": "spore_corner"
+            }
+          }
+        },
+        {
+          "id": "search_the_wine_racks_and_the_drum",
+          "label": "Search the wine racks and the sealed drum",
+          "description": "Go to the sagging shelves and the metal thing crouched beside them.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You cross to the racks. The bottles are furred grey with dust, and the metal drum beside them is closer to your height than you judged from the door.",
+              "effects": [],
+              "next_beat": "wine_cellar"
+            }
+          }
+        },
+        {
+          "id": "cross_to_the_hatch",
+          "label": "Cross to the hatch and its cold draft",
+          "description": "Go straight to the low door in the far wall where the outside air leaks through.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You step over the packed earth to the far wall. The draft is stronger here, cold and green, sliding out from the seam of a hatch set low in the stone.",
+              "effects": [],
+              "next_beat": "the_hatch"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spore_corner",
+      "description": "The bed of caps breathes against the stone, pale and faintly luminous. A fine dust hangs over them, disturbed by nothing you can see.",
+      "choices": [
+        {
+          "id": "break_a_cap_open",
+          "label": "Break a cap open to see what it is",
+          "description": "Take one of the caps and split it to learn what you are looking at.",
+          "resource_tests": [
+            {
+              "resource": "Body",
+              "dc": 6
+            }
+          ],
+          "outcomes": {
+            "success": {
+              "narrative": "The cap splits with a wet sound and coughs a puff of spores into your face. You turn your head in time, but not before a thin breath of them reaches the back of your throat, cool and strangely sweet. Something in your chest takes note of it and does not let go.",
+              "effects": [
+                {
+                  "add_to_registry": {
+                    "category": "run_facts",
+                    "id": "spores_inhaled"
+                  }
+                }
+              ],
+              "next_beat": "wine_cellar"
+            },
+            "failure": {
+              "narrative": "The cap bursts sooner than you expect and you breathe a full lungful before you can pull back. You doubled over, coughing hard, the cellar swimming pale at the edges while the spores settle somewhere behind your ribs and stay. When your eyes clear, the taste of them is still in you.",
+              "effects": [
+                {
+                  "add_to_registry": {
+                    "category": "run_facts",
+                    "id": "spores_inhaled"
+                  }
+                },
+                {
+                  "resource": "Body",
+                  "delta": -2
+                }
+              ],
+              "next_beat": "wine_cellar"
+            }
+          }
+        },
+        {
+          "id": "leave_the_growth_alone",
+          "label": "Leave the growth alone and move on",
+          "description": "Whatever the caps are, they are better left unbroken.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You keep your hands to yourself and give the corner a wide berth. The caps go on breathing behind you, undisturbed, as you move deeper into the cellar.",
+              "effects": [],
+              "next_beat": "wine_cellar"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "wine_cellar",
+      "description": "The racks hold rank on rank of dusty bottles, their labels rotted to grey pulp. Beside them the metal drum stands seamless and sealed, taller than it has any right to be, its surface catching your light in a way that stone and glass do not.",
+      "choices": [
+        {
+          "id": "take_a_bottle_from_the_rack",
+          "label": "Take a bottle from the rack",
+          "description": "Work one of the old bottles free of its dust and its cradle.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You ease a bottle loose in a fall of grey dust. Whatever it held has long since turned to vinegar and sediment, sloshing thick against the glass. You set it back in its cradle and wipe your hand on your coat.",
+              "effects": [],
+              "next_beat": "the_hatch"
+            }
+          }
+        },
+        {
+          "id": "examine_the_sealed_metal_drum",
+          "label": "Examine the enormous sealed drum",
+          "description": "Run your hands over the metal thing and look for a way into it.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The metal is cold and utterly smooth, without a seam, a lid, or a mark of any tool — a single seamless piece that no craft you know of could have closed. It is too modern for this place by centuries, and it is wrong here in a way you cannot name. Nothing you do finds any purchase, and after a moment you take your hands off it and step back.",
+              "effects": [],
+              "next_beat": "the_hatch"
+            }
+          }
+        },
+        {
+          "id": "leave_the_cellar_for_the_hatch",
+          "label": "Leave the cellar for the hatch",
+          "description": "You have seen enough of the racks. Make for the draft.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You leave the bottles and their silent metal neighbour to the dark and turn toward the far wall, where the cold draft is still leaking in.",
+              "effects": [],
+              "next_beat": "the_hatch"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "the_hatch",
+      "description": "The hatch is low and iron-banded, set into the stone at knee height, and the draft sliding under it is unmistakably outside air — cold, wet, and green. Beyond it, faintly, you can hear leaves.",
+      "choices": [
+        {
+          "id": "haul_the_hatch_open_and_climb_out",
+          "label": "Haul the hatch open and climb out",
+          "description": "Work the iron banding loose and take the way out of the manor.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "The hatch fights you, then gives all at once, and a wash of wet green air pours down over you. Beyond the opening there is no corridor and no stair — only dark soil and the tangled roots of a garden that should be nowhere near the entry hall. You brace your hands on the earth and pull yourself up toward it.",
+              "effects": [],
+              "force_next_draw": {
+                "id": "entry_hall_transition_shortcut_to_gardens_01"
+              }
+            }
+          }
+        },
+        {
+          "id": "leave_the_hatch_and_climb_back",
+          "label": "Leave the hatch and climb back up",
+          "description": "The outside can wait. Return to the manor above.",
+          "resource_tests": [],
+          "outcomes": {
+            "success": {
+              "narrative": "You let the hatch settle back into its frame and turn away from the cold green draft. The cellar steps are where you left them, and the manor is still waiting at the top of them.",
+              "effects": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "visual": {
+    "alt_text": "A low forgotten cellar of packed earth: a corner clotted with pale luminous mushrooms, sagging racks of dust-furred wine bottles beside an enormous seamless metal drum, and a low iron-banded hatch in the far wall leaking cold green light."
+  }
+}

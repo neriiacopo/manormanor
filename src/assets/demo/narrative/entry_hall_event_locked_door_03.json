@@ -1,0 +1,77 @@
+{
+  "id": "entry_hall_event_locked_door_03",
+  "class": "Event",
+  "subtype": "Discovery",
+  "biomes": [
+    "entry_hall"
+  ],
+  "title": "A Door Left Ajar",
+  "description": "The corridor splits ahead. One passage lies open, the floor swept clean, the air moving as if something passed through recently. The other is sealed by a heavy door, its latch unbroken, a faint wet smell seeping beneath it. You have no certainty about either path — only the weight of the decision pressing behind your eyes.",
+  "properties": {
+    "is_anchor": false,
+    "is_unique": false
+  },
+  "force_next_draw": null,
+  "choices": [
+    {
+      "label": "Take the open passage",
+      "description": "Follow the path that already lies open.",
+      "outcomes": {
+        "success": {
+          "narrative": "The passage is empty and ends at a wider hall; whatever moved through here is gone.",
+          "effects": []
+        }
+      },
+      "id": "take_the_open_passage"
+    },
+    {
+      "label": "Force open the sealed door",
+      "description": "Press your weight against the heavy door and push through.",
+      "resource_tests": [
+        {
+          "resource": "Body",
+          "dc": 6
+        }
+      ],
+      "outcomes": {
+        "success": {
+          "narrative": "The door yields with a groan; beyond it is a room long unused, the wet smell explained by nothing visible — but it is still, and the stillness feels earned.",
+          "effects": [
+            {
+              "resource": "Determination",
+              "delta": 1
+            }
+          ]
+        },
+        "failure": {
+          "narrative": "The door opens onto a room that should not be this large, and you stand at its threshold too long, trying to reconcile what you see with what you know about the manor's footprint.",
+          "effects": [
+            {
+              "resource": "Body",
+              "delta": -2
+            }
+          ]
+        }
+      },
+      "id": "force_open_the_sealed_door"
+    },
+    {
+      "label": "Try the iron key",
+      "description": "Slide the iron key into the lock and turn.",
+      "requires_item": "iron_key",
+      "resource_tests": [],
+      "outcomes": {
+        "success": {
+          "narrative": "The key fits perfectly, the door, despite its weight opens without resistance. You swallow, take a deep breath, and step through.",
+          "force_next_draw": {
+            "id": "entry_hall_event_discovery_01"
+          }
+        }
+      },
+      "id": "try_the_iron_key"
+    }
+  ],
+  "visual": {
+    "alt_text": "A forking corridor in dark stone, one passage open and lamp-lit, the other closed by a heavy wooden door with darkness at its base."
+  }
+}

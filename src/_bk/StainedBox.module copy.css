@@ -1,0 +1,151 @@
+.stainedPaper {
+    --stain-intensity: 1;
+    --stain-color: 112 76 35;
+    --paper-radius: 0;
+
+    isolation: isolate;
+    overflow: hidden;
+
+    border-radius: var(--paper-radius);
+
+    background: linear-gradient(
+        115deg,
+        var(--color-parchment-dark) 0%,
+        var(--color-parchment-mid) 21%,
+        var(--color-parchment-light) 48%,
+        var(--color-parchment-mid) 76%,
+        #e8dfcf 100%
+    );
+
+    filter: var(--paper-filter);
+}
+
+.filterDefinitions {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.stains,
+.speckles,
+.edges {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.stains {
+    z-index: 0;
+
+    background:
+        radial-gradient(
+            ellipse 23% 19% at 7% 25%,
+            rgb(var(--stain-color) / calc(0.22 * var(--stain-intensity))) 0%,
+            rgb(var(--stain-color) / calc(0.1 * var(--stain-intensity))) 42%,
+            transparent 75%
+        ),
+        radial-gradient(
+            ellipse 31% 15% at 26% 2%,
+            rgb(var(--stain-color) / calc(0.15 * var(--stain-intensity))) 0%,
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 35% 17% at 69% 3%,
+            rgb(var(--stain-color) / calc(0.14 * var(--stain-intensity))) 0%,
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 19% 25% at 98% 30%,
+            rgb(var(--stain-color) / calc(0.16 * var(--stain-intensity))) 0%,
+            transparent 74%
+        ),
+        radial-gradient(
+            ellipse 25% 15% at 73% 97%,
+            rgb(var(--stain-color) / calc(0.15 * var(--stain-intensity))) 0%,
+            transparent 74%
+        ),
+        radial-gradient(
+            ellipse 20% 18% at 10% 91%,
+            rgb(var(--stain-color) / calc(0.1 * var(--stain-intensity))) 0%,
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 42% 30% at 47% 52%,
+            rgb(255 255 255 / 0.14) 0%,
+            transparent 75%
+        );
+
+    mix-blend-mode: multiply;
+    opacity: min(1, var(--stain-intensity));
+}
+
+.speckles {
+    z-index: 1;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgb(var(--stain-color) / calc(0.32 * var(--stain-intensity))) 0
+                0.7px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgb(var(--stain-color) / calc(0.21 * var(--stain-intensity))) 0 1px,
+            transparent 1.8px
+        ),
+        radial-gradient(
+            circle,
+            rgb(var(--stain-color) / calc(0.12 * var(--stain-intensity))) 0
+                1.4px,
+            transparent 2.2px
+        );
+
+    background-position:
+        11px 17px,
+        43px 29px,
+        19px 71px;
+
+    background-size:
+        79px 97px,
+        137px 113px,
+        191px 173px;
+
+    mix-blend-mode: multiply;
+    opacity: 0.65;
+}
+
+.edges {
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgb(var(--stain-color) / calc(0.1 * var(--stain-intensity))),
+            transparent 7%,
+            transparent 93%,
+            rgb(var(--stain-color) / calc(0.1 * var(--stain-intensity)))
+        ),
+        linear-gradient(
+            180deg,
+            rgb(var(--stain-color) / calc(0.08 * var(--stain-intensity))),
+            transparent 9%,
+            transparent 89%,
+            rgb(var(--stain-color) / calc(0.12 * var(--stain-intensity)))
+        );
+
+    box-shadow:
+        inset 0 0 18px
+            rgb(var(--stain-color) / calc(0.08 * var(--stain-intensity))),
+        inset 0 0 90px
+            rgb(var(--stain-color) / calc(0.16 * var(--stain-intensity)));
+
+    mix-blend-mode: multiply;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+}

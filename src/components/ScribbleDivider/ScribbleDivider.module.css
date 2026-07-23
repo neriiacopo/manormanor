@@ -1,0 +1,6 @@
+.divider { background: var(--color-ink); }
+.horizontal { width: 100%; height: 2px; }
+.vertical { width: 2px; height: 100%; }
+.struck { background: var(--color-accent-red); opacity: 0.7; }
+/* TODO(cowork): animate `struck` as a drawn-on strike (stroke-dashoffset
+   on an inline SVG line) rather than a static color swap. */

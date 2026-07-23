@@ -1,0 +1,63 @@
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100dvh;
+}
+
+.front {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    transform-origin: center;
+
+    z-index: 10;
+    mix-blend-mode: difference;
+    backdrop-filter: blur(1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: var(--color-accent-red); */
+}
+
+.manorViewport {
+    transform: translateY(-20dvh);
+    filter: brightness(1.2) contrast(1.2);
+    /* position: fixed; */
+    display: float;
+    width: 100dvw;
+    height: 80dvh;
+    z-index: 10;
+    transform-origin: center;
+    transition: opacity 1.4s ease;
+}
+.title {
+    writing-mode: vertical-rl;
+    font-family: var(--font-scribble);
+    font-size: clamp(2rem, 8vw, 3rem);
+    color: var(--color-ink);
+    backdrop-filter: blur(2px);
+    /* filter: blur(3px); */
+    /* z-index: 0; */
+}
+
+.menu {
+    margin-top: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.colophon {
+    font-family: var(--font-gothic);
+    writing-mode: vertical-rl;
+    font-size: 0.75rem;
+    color: var(--color-ink);
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+}
